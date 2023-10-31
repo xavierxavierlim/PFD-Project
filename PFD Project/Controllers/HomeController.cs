@@ -18,6 +18,11 @@ namespace PFD_Project.Controllers
             return View();
         }
 
+        public IActionResult Pin()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
