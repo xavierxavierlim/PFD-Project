@@ -28,6 +28,21 @@ namespace PFD_Project.Controllers
             return View();
         }
 
+        public IActionResult Home()
+        {
+            return View();
+        }
+
+        public IActionResult Receipt()
+        {
+            return View();
+        }
+
+        public IActionResult WithdrawMessage()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

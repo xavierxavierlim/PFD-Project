@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Receipt";
+}
+
+<div class="text-center container-fluid">
+    <h1>Withdraw Amount: $50</h1>
+    <h4>Would you like a receipt?</h4>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+
+<div class="container">
+    <div class="row justify-content-between">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body" style="text-align:center; min-height: 150px;">
+                    <a asp-controller="Home" asp-action="" style="font-size:30px; text-decoration:none">Yes</a>
+                    <p>(show card balance)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body" style="text-align:center; min-height: 150px;">
+                    <a asp-controller="Home" asp-action="" style="font-size:30px; text-decoration:none">Yes</a>
+                    <p>(hide card balance)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body" style="text-align:center; min-height: 150px;">
+                    <a asp-controller="Home" asp-action="" style="font-size:30px; text-decoration:none">No</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
