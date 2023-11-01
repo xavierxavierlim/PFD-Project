@@ -43,6 +43,26 @@ namespace PFD_Project.Controllers
             return View();
         }
 
+        public IActionResult FeedbackStars()
+        {
+            return View();
+        }
+
+        public IActionResult FeedbackOptions()
+        {
+            return View();
+        }
+
+        public IActionResult Thanks()
+        {
+            return View();
+        }
+
+        public IActionResult WithdrawAmount()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

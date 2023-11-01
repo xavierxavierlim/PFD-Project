@@ -17,7 +17,17 @@ body {
   margin-bottom: 60px;
 }
 
-.distribute-space {
+.star-rating {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.star {
+    font-size: 100px;
+    margin: 0 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
 }
