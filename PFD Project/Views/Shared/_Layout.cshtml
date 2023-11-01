@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PFD_Project.styles.css" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/41cc033c5e.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -14,29 +15,30 @@
             <div class="col text-left">
                 <ul class="navbar-nav list-group-horizontal">
                     <li class="nav-item mx-1">
-                        <a asp-area="" asp-controller="Home" asp-action="">Return pHolder</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-backward fa-2xl" style="color: #000000; padding:20px"></i></a>
                     </li>
                     <li class="nav-item mx-1">
-                        <a asp-area="" asp-controller="Home" asp-action="">Log Out pHolder</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-right-from-bracket fa-2xl" style="color: #000000; padding:20px"></i></a>
                     </li>
                 </ul>
             </div>
             <div class="col text-right">
-                <ul class="navbar-nav list-group-horizontal">
-                    <li class="nav-item mx-1">
-                        <button asp-area="" asp-controller="Home" asp-action="">Camera pHolder</button>
+                <ul class="navbar-nav list-group-horizontal justify-content-end">
+                    <li class="nav-item mx-1 ml-auto">
+                        <a asp-area="" asp-controller="Home" asp-action=""><i class="fa-solid fa-camera fa-2xl" style="color: #000000; padding:20px"></i></a>
                     </li>
-                    <li class="nav-item mx-1">
-                        <button asp-area="" asp-controller="Home" asp-action="">Screen-Reader pHolder</button>
+                    <li class="nav-item mx-1 ml-auto">
+                        <a asp-area="" asp-controller="Home" asp-action=""><i class="fa-solid fa-volume-high fa-2xl" style="color: #000000; padding:20px"></i></a>
                     </li>
-                    <li class="nav-item mx-1">
-                        <button asp-area="" asp-controller="Home" asp-action="">Language pHolder</button>
+                    <li class="nav-item mx-1 ml-auto">
+                        <a asp-area="" asp-controller="Home" asp-action=""><i class="fa-solid fa-language fa-2xl" style="color: #000000; padding:20px"></i></a>
                     </li>
-                    <li class="nav-item mx-1">
-                        <button asp-area="" asp-controller="Home" asp-action="">Adjust-screen pHolder</button>
+                    <li class="nav-item mx-1 ml-auto">
+                        <a asp-area="" asp-controller="Home" asp-action=""><i class="fa-solid fa-magnifying-glass fa-2xl" style="color: #000000; padding:20px"></i></a>
                     </li>
                 </ul>
             </div>
+
         </div>
     </header>
     <div class="container">
