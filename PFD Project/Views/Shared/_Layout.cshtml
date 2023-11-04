@@ -46,10 +46,14 @@
         </div>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <div id="cam">
             <div id="camContainer">
                 <video id="streamCam" autoplay></video>
             </div>
+        </div>
+
+        <main role="main" class="pb-3">
+            
             @RenderBody()
         </main>
     </div>
@@ -64,3 +68,5 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+
