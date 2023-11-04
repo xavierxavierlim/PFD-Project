@@ -6,16 +6,60 @@
 <div class="text-center container-fluid">
     <h1>Get Cash</h1>
 </div>
-
+<br />
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body" style="text-align:center; min-height: 150px;">
-                    <a asp-controller="Home" asp-action="WithdrawMessage" style="font-size:30px; text-decoration:none">$50</a>
+        <div class="col-md-6">
+            <div class="card border-dark">
+                <div class="card-body" style="text-align: center; min-height: 150px;">
+                    <a asp-controller="Home" asp-action="WithdrawMessage" style="font-size: 30px; text-decoration: none">$50</a>
                 </div>
             </div>
+            <br>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-dark">
+                <div class="card-body" style="text-align: center; min-height: 150px;">
+                    <a asp-controller="Home" asp-action="WithdrawMessage" style="font-size: 30px; text-decoration: none">$80</a>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-dark">
+                <div class="card-body" style="text-align: center; min-height: 150px;">
+                    <a asp-controller="Home" asp-action="WithdrawMessage" style="font-size: 30px; text-decoration: none">$100</a>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-dark">
+                <div class="card-body" style="text-align: center; min-height: 150px;">
+                    <a asp-controller="Home" asp-action="WithdrawMessage" style="font-size: 30px; text-decoration: none">$150</a>
+                </div>
+            </div>
+            <br>
         </div>
     </div>
 </div>
 
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="d-flex justify-content-center align-items-center">
+                <b class="form-control-lg mr-2">Other Amount:</b>
+                &nbsp;
+                <form action="@Url.Action("WithdrawMessage", "Home")" method="get" class="d-flex">
+                    <input type="text" name="amount" placeholder="Enter amount" class="form-control form-control-lg mr-2">
+                    &nbsp;
+                    <button type="submit" style="border:none; outline:none; background:transparent;">
+                        &rArr;
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

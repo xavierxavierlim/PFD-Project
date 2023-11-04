@@ -1,12 +1,64 @@
-﻿@{
-    ViewData["Title"] = "View";
-}
+﻿<div class="text-center container-fluid">
+    <h1 id="pin">Sign in with PIN!</h1>
+    <h4 id="keyPin">Please key in your pin with the keypad:</h4>
 
-<div class="text-center container-fluid">
-    <h1>Sign in with PIN!</h1>
-    <h4>Please key in your pin with the keypad:</h4>
+    <div class="pin-input">
+        <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" id="firstDigit" />
+        <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" />
+        <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" />
+        <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" />
+        <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" />
+        <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" id="lastDigit" onkeydown="checkEnter(event)" />
+    </div>
 </div>
 
+<script>
+    function moveToNext(input) {
+        const maxLength = parseInt(input.getAttribute('maxlength'));
+        let digitValue = input.value.replace(/\D/g, ''); // Remove non-digit characters
+        if (digitValue.length > maxLength) {
+            digitValue = digitValue.substring(0, maxLength); // Ensure only one digit is kept
+        }
+        input.value = digitValue; // Update the input value with filtered digits
 
+        const currentLength = digitValue.length;
 
+        if (currentLength >= maxLength) {
+            // Move focus to the next input field
+            const nextInput = input.nextElementSibling;
+            if (nextInput) {
+                nextInput.focus();
+            }
+        }
+    }
 
+    function checkEnter(event) {
+        if (event.key === 'Enter') {
+            // Redirect to Home.cshtml
+            window.location.href = 'Home';
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', function () {
+        const firstDigitInput = document.getElementById('firstDigit');
+        if (firstDigitInput) {
+            firstDigitInput.focus();
+        }
+
+        function checkBackspace(event) {
+            if (event.key === 'Backspace' && !event.target.value && event.target.previousElementSibling) {
+                // If Backspace is pressed and the current input is empty,
+                // move focus to the previous input field and clear the previous input
+                const previousInput = event.target.previousElementSibling;
+                previousInput.focus();
+                previousInput.value = '';
+            }
+        }
+
+        // Attach the checkBackspace function to the onkeydown event of the input fields
+        const pinDigits = document.querySelectorAll('.pin-digit');
+        pinDigits.forEach(function (pinDigit) {
+            pinDigit.addEventListener('keydown', checkBackspace);
+        });
+    });
+</script>
