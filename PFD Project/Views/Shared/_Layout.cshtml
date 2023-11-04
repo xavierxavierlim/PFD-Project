@@ -54,13 +54,45 @@
         </main>
     </div>
 
-    <footer class="footer text-muted" style="position:absolute;bottom:0">
-        <p>Reminder: Keep a lookout of your surroudings (need use js)</p>
+    <footer class="footer text-muted" style="position:absolute;bottom:0;padding:10px">
+        <b><p id="reminderText"></p></b>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        const reminders = [
+            "Reminder: Keep a lookout of your surroundings",
+            "Reminder: Ensure that nobody is near you before keying in your pin",
+            "Reminder: Do not forget to take your card",
+            "Reminder: Report any suspicious activity",
+            "Reminder: Do not share your pin with anyone"
+        ];
+
+        shuffleArray(reminders);
+
+        let currentReminderIndex = 0;
+
+        function updateReminder() {
+            document.getElementById('reminderText').textContent = reminders[currentReminderIndex];
+            currentReminderIndex = (currentReminderIndex + 1) % reminders.length;
+
+            setTimeout(updateReminder, 30000); // Change the reminder every 30 seconds
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Start the reminder loop
+        updateReminder();
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
