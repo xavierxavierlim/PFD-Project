@@ -16,6 +16,24 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.pin-input {
+    display: flex;
+    justify-content: space-between; /* Center the input fields horizontally */
+    align-items: center; /* Center the input fields vertically */
+    padding: 150px;
+}
+
+.pin-digit {
+    border: none;
+    border-bottom: 2px solid black;
+    width: 60px; /* Adjust the width as needed */
+    text-align: center;
+    margin: 0 5px; /* Adjust the margin as needed */
+    font-size: 30px;
+    outline: none;
+}
+
 .star-rating {
     display: flex;
     justify-content: center;
