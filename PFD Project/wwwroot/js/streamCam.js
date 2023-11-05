@@ -1,15 +1,26 @@
-﻿var cam = false;
+﻿if (sessionStorage.getItem("useCam") == null) {
+    sessionStorage.setItem("useCam", false)
+}
+var cam = (sessionStorage.getItem("useCam") === 'true');
 
 const closeCam = () => {
     const video = document.getElementById("streamCam");
     let stream = video.srcObject;
     var tracks = stream.getVideoTracks();
-    tracks.forEach(track => track.enabled = false);
+    //tracks.forEach(track => track.enabled = false);
 
-    const displayContainer = document.getElementById('camContainer');
-    displayContainer.style.display = 'none';
+    for (var i = 0; i < tracks.length; i++) {
+        var track = tracks[i];
+        track.stop();
+    }
+    video.srcObject = null;
 
-    cam = false;
+    const icon = document.getElementsByClassName("fa-camera");
+    icon.style.color = '#000000';
+
+    sessionStorage.setItem("useCam", false);
+    cam = (sessionStorage.getItem("useCam") === 'true');
+
 };
 const openCam = () => {
 
@@ -25,15 +36,24 @@ const openCam = () => {
             })
             .catch(function (error) {
                 console.log("Something went wrong!");
+                console.log(error);
             });
+            
     }
 
     const displayContainer = document.getElementById('camContainer');
     displayContainer.style.display = 'block';
 
-    cam = true;
+    sessionStorage.setItem("useCam", true);
+    cam = (sessionStorage.getItem("useCam") === 'true');
 }
 
 function toggleCam() {
     cam ? closeCam() : openCam();
 }
+function initialiseCam() {
+    if (cam) {
+        openCam();
+    }
+}
+initialiseCam();

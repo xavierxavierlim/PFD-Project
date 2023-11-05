@@ -2,6 +2,7 @@
 using PFD_Project.Models;
 using System.Diagnostics;
 
+
 namespace PFD_Project.Controllers
 {
     public class HomeController : Controller
@@ -13,11 +14,14 @@ namespace PFD_Project.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
-
+        public ActionResult LogOut()
+        {
+            return RedirectToAction("Index");
+        }
         public IActionResult Pin()
         {
             return View();
