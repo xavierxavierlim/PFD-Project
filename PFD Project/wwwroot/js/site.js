@@ -12,6 +12,10 @@ const nonCashService = document.getElementById("nonCashService"); // Home.cshtml
 const activateCard = document.getElementById("activateCard"); // Home.cshtml
 const balanceEnquiry = document.getElementById("balanceEnquiry"); // Home.cshtml
 
+const getCashHeader = document.getElementById("getCashHeader");
+const otherAmount = document.getElementById("otherAmount");
+const enterAmountPlaceholder = document.getElementById("enterAmountPlaceholder");
+
 let isEnglish = true;
 
 function toggleLanguage() {
@@ -36,19 +40,28 @@ function toggleLanguage() {
             helloQuestion.innerHTML = "<h4>今天您想做什么？</h4>"
         }
         if (getCash != null) {
-            getCash.innerHTML = "<p style='padding-bottom:20px, font-size:30px'<b>提取现金</b></p>";
+            getCash.innerHTML = "<p style='padding-bottom:20px, font-size:30px'><b>提取现金</b></p>";
         }
         if (withdrawCash != null) {
-            withdrawCash.innerHTML = "<a>提款</a>"
+            withdrawCash.innerHTML = "<a asp-controller='Home' asp-action='WithdrawAmount' style='font-size:30px; text-decoration:none'>提款</a>";
         }
         if (nonCashService != null) {
-            nonCashService.innerHTML = "<b>非现金服务</b>";
+            nonCashService.innerHTML = "<p><b>非现金服务</b></p>";
         }
         if (activateCard != null) {
-            activateCard.innerHTML = "<a>启动卡</a>";
+            activateCard.innerHTML = "<a asp-controller='Home' asp-action='' style:'font-size:30px; text-decoration:none'>启动卡</a>";
         }
         if (balanceEnquiry != null) {
-            balanceEnquiry.innerHTML = "<a>余额查询</a>";
+            balanceEnquiry.innerHTML = "<a asp-controller='Home' asp-action='' style='font-size:30px; text-decoration:none'>余额查询</a>";
+        }
+        if (getCashHeader != null) {
+            getCashHeader.innerHTML = "<h1>提取现金</h1>";
+        }
+        if (otherAmount != null) {
+            otherAmount.innerHTML = "<p><b class='form-control-lg mr-2'>其他金额:</b></p>"
+        }
+        if (enterAmountPlaceholder != null) {
+            enterAmountPlaceholder.placeholder = "输入金额";
         }
 
     } else {
@@ -74,16 +87,25 @@ function toggleLanguage() {
             getCash.innerHTML = "<p style='padding-bottom:20px; font-size:30px'><b>Get Cash</b></p>";
         }
         if (withdrawCash != null) {
-            withdrawCash.innerHTML = "<a>提款</a>"
+            withdrawCash.innerHTML = "<a asp-controller='Home' asp-action='WithdrawAmount' style='font-size:30px; text-decoration:none'>Withdraw Cash</a>"
         }
         if (nonCashService != null) {
-            nonCashService.innerHTML = "<b>非现金服务</b>";
+            nonCashService.innerHTML = "<p><b>Non Cash Services</b></p>";
         }
         if (activateCard != null) {
-            activateCard.innerHTML = "<a>启动卡</a>";
+            activateCard.innerHTML = "<a asp-controller:'Home' asp-action='' style:'font-size:30px; text-decoration:none'>Activate Card</a>";
         }
         if (balanceEnquiry != null) {
-            balanceEnquiry.innerHTML = "<a>余额查询</a>";
+            balanceEnquiry.innerHTML = "<a asp-controller='Home' asp-action='' style='font-size:30px; text-decoration:none'>Balance Enquiry</a>";
+        }
+        if (getCashHeader != null) {
+            getCashHeader.innerHTML = "<h1>Get Cash</h1>";
+        }
+        if (otherAmount != null) {
+            otherAmount.innerHTML = "<p><b class='form-control-lg mr-2'>Other Amount:</b></p>"
+        }
+        if (enterAmountPlaceholder != null) {
+            enterAmountPlaceholder.placeholder = "Enter amount";
         }
 
     }
