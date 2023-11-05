@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html> <!--hello world-->
+﻿
+<!DOCTYPE html> <!--hello world-->
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,9 +8,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PFD_Project.styles.css" asp-append-version="true" />
-
-    <link rel="stylesheet" href="~/css/streamCam.css" asp-append-version="true" />
-    <script src="~/js/streamCam.js"></script>
+    <link rel="stylesheet" href="~/css/streamCam.css" asp-append-version="true"/>
+    <script src="~/js/streamCam.js" defer></script>
 
     <script src="https://kit.fontawesome.com/41cc033c5e.js" crossorigin="anonymous"></script>
 </head>
@@ -29,7 +29,7 @@
             <div class="col text-right">
                 <ul class="navbar-nav list-group-horizontal justify-content-end">
                     <li class="nav-item mx-1 ml-auto">
-                        <a href="#" onClick="toggleCam()"><i class="fa-solid fa-camera fa-2xl" style="color: #000000; padding:20px"></i></a>
+                        <a href="#" onClick="toggleCam()" id="camIcon"><i class="fa-solid fa-camera fa-2xl" style="color: #000000; padding:20px"></i></a>
                     </li>
                     <li class="nav-item mx-1 ml-auto">
                         <a asp-area="" asp-controller="Home" asp-action=""><i class="fa-solid fa-volume-high fa-2xl" style="color: #000000; padding:20px"></i></a>
@@ -46,6 +46,7 @@
         </div>
     </header>
     <div class="container">
+
         <div id="cam">
             <div id="camContainer">
                 <video id="streamCam" autoplay></video>
