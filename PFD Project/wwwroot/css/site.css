@@ -48,3 +48,26 @@ body {
     text-decoration: none;
     color: black;
 }
+
+.feedback-container {
+    display:grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    padding:10% 1vh;
+    gap: 8vh;
+    justify-content:space-around;
+}
+
+.feedback-option {
+    background-color: rgb(213, 213, 213, 0.80);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius:1rem;
+    text-align: center;
+    padding: 2rem;
+    text-decoration:none;
+    color: rgb(30, 30, 30)
+}
+
+.feedback-option:hover {
+    background-color: rgb(138, 138, 138);
+    color: rgb(30, 30, 30)
+}
