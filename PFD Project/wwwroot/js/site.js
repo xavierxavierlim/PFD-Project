@@ -58,11 +58,13 @@ function toggleLanguage() {
             getCashHeader.innerHTML = "<h1>提取现金</h1>";
         }
         if (otherAmount != null) {
-            otherAmount.innerHTML = "<p><b class='form-control-lg mr-2'>其他金额:</b></p>"
+            otherAmount.innerHTML = "<p><b class='form-control-lg mr-2' style='white-space: nowrap;'>其他金额:</b></p>";
         }
         if (enterAmountPlaceholder != null) {
             enterAmountPlaceholder.placeholder = "输入金额";
+            enterAmountPlaceholder.style.width = "100%";
         }
+
 
     } else {
         if (welcomeMessage != null) {
@@ -105,12 +107,23 @@ function toggleLanguage() {
             otherAmount.innerHTML = "<p><b class='form-control-lg mr-2'>Other Amount:</b></p>"
         }
         if (enterAmountPlaceholder != null) {
-            enterAmountPlaceholder.placeholder = "Enter amount";
+            enterAmountPlaceholder.placeholder = "Enter amount"; 
         }
-
+         
     }
     event.preventDefault();
 }
 
+    document.getElementById('enterAmountPlaceholder').addEventListener('input', function() {
+        const amount = this.value.trim();
+        const submitButton = document.getElementById('submitButton');
+        
+        // Check if the input is a valid number with or without a leading $
+        if (/^\$?\d+$/.test(amount)) {
+            submitButton.removeAttribute('disabled');
+        } else {
+            submitButton.setAttribute('disabled', 'true');
+        }
+    });
 
 
