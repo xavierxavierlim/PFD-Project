@@ -90,28 +90,28 @@ const changetoChinese = () => {
         area.innerHTML = "<h1>我们可以改进哪些领域?</h1>";
     }
     if (slowTransactionProcessing != null) {
-        slowTransactionProcessing.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>交易处理速度慢</a>"
+        slowTransactionProcessing.innerHTML = "交易处理速度慢"
     }
     if (difficultyWithATM != null) {
-        difficultyWithATM.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>使用ATM机有困难</a>"
+        difficultyWithATM.innerHTML = "使用ATM机有困难"
     }
     if (displayUninteractive != null) {
-        displayUninteractive.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>显示非交互式</a>"
+        displayUninteractive.innerHTML = "显示非交互式"
     }
     if (inadequateLighting != null) {
-        inadequateLighting.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>照明不足</a>"
+        inadequateLighting.innerHTML = "照明不足"
     }
     if (transactionErrors != null) {
-        transactionErrors.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>交易错误</a>"
+        transactionErrors.innerHTML = "交易错误"
     }
     if (accessibilityIssues != null) {
-        accessibilityIssues.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>可访问性问题</a>"
+        accessibilityIssues.innerHTML = "可访问性问题"
     }
     if (securityIssues != null) {
-        securityIssues.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>安全问题</a>"
+        securityIssues.innerHTML = "安全问题"
     }
     if (others != null) {
-        others.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>其他</a>"
+        others.innerHTML = "其他"
     }
     if (thanks != null) {
         thanks.innerHTML = "<h1>感谢您的反馈意见!</h1>"
@@ -176,28 +176,28 @@ const changetoEnglish = () => {
         area.innerHTML = "<h1>What are the areas we can improve on?</h1>";
     }
     if (slowTransactionProcessing != null) {
-        slowTransactionProcessing.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>Slow transaction processing</a>";
+        slowTransactionProcessing.innerHTML = "Slow transaction processing";
     }
     if (difficultyWithATM != null) {
-        difficultyWithATM.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>Difficulty using the ATM</a>"
+        difficultyWithATM.innerHTML = "Difficulty using the ATM"
     }
     if (displayUninteractive != null) {
-        displayUninteractive.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>Display uninteractive</a>"
+        displayUninteractive.innerHTML = "Display uninteractive"
     }
     if (inadequateLighting != null) {
-        inadequateLighting.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>Inadequate Lighting</a>"
+        inadequateLighting.innerHTML = "Inadequate Lighting"
     }
     if (transactionErrors != null) {
-        transactionErrors.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>Transaction Errors</a>"
+        transactionErrors.innerHTML = "Transaction Errors"
     }
     if (accessibilityIssues != null) {
-        accessibilityIssues.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>Accessibility Issues</a>"
+        accessibilityIssues.innerHTML = "ccessibility Issues"
     }
     if (securityIssues != null) {
-        securityIssues.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>Security Issues</a>"
+        securityIssues.innerHTML = "Security Issues"
     }
     if (others != null) {
-        others.innerHTML = "<a asp-controller='Home' asp-action='Thanks' class='feedback-option'>Others</a>"
+        others.innerHTML = "Others"
     }
     if (thanks != null) {
         thanks.innerHTML = "<h1>Thank you for your feedback!</h1>"
