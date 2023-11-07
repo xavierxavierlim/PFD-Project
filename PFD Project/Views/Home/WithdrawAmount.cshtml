@@ -3,7 +3,7 @@
 }
 
 <div class="text-center container-fluid">
-    <p class="getCashHeader rTitle">Get Cash</p>
+    <p class="getCashHeader rTitle" id="getCashHeader">Get Cash</p>
 </div>
 <br />
 <div class="container">
@@ -50,10 +50,10 @@
         <div class="col-md-12 text-center">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="d-flex align-items-center">
-                    <p id="otherAmount rSub" class="form-control-lg mr-3" style="white-space: nowrap; padding-top:20px;"><b>Other Amount:</b></p>
+                    <p id="otherAmount" class="form-control-lg mr-3 rSub" style="white-space: nowrap; padding-top:20px;"><b>Other Amount:</b></p>
                     <form action="@Url.Action("WithdrawMessage", "Home")" method="get" class="d-flex" style="width: 200px;">
                         <div class="d-flex align-items-center">
-                            <input type="text" id="enterAmountPlaceholder rSub" name="amount" class="form-control form-control-lg" style="width: 100%;" placeholder="Enter Amount" required>
+                            <input type="text" id="enterAmountPlaceholder" name="amount" class="form-control form-control-lg rSub" style="width: 100%;" placeholder="Enter Amount" required>
                         </div>
                         &nbsp;
                         <button type="submit" id="submitButton" style="border: none; outline: none; background: transparent;" disabled>
