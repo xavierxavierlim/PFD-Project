@@ -52,19 +52,22 @@ body {
 .feedback-container {
     display:grid;
     grid-template-columns: 25% 25% 25% 25%;
-    padding:10% 1vh;
+    padding:1vh;
     gap: 8vh;
     justify-content:space-around;
 }
 
 .feedback-option {
+    display:flex;
     background-color: rgb(213, 213, 213, 0.80);
     border: 1px solid rgba(0, 0, 0, 0.8);
     border-radius:1rem;
     text-align: center;
     padding: 2rem;
     text-decoration:none;
-    color: rgb(30, 30, 30)
+    color: rgb(30, 30, 30);
+    justify-content:center;
+    align-items:center;
 }
 
 .feedback-option:hover {
