@@ -15,10 +15,17 @@ const nonCashService = document.getElementById("nonCashService"); // Home.cshtml
 const activateCard = document.getElementById("activateCard"); // Home.cshtml
 const balanceEnquiry = document.getElementById("balanceEnquiry"); // Home.cshtml
 
-// WithdrawAmount.cshtml
+// WithdrawAmount
 const getCashHeader = document.getElementById("getCashHeader"); // WithdrawAmount.cshtml
 const otherAmount = document.getElementById("otherAmount"); // WithdrawAmount.cshtml
 const enterAmountPlaceholder = document.getElementById("enterAmountPlaceholder"); // WithdrawAmount.cshtml
+
+// WithdrawMessage.cshtml
+const withdrawMessage = document.getElementById("withdrawMessage");
+
+// Receipt.cshtml
+
+
 
 // FeedbackStars.cshtml
 const rateExperience = document.getElementById("rateExperience"); // FeedbackStars.cshtml
@@ -82,6 +89,9 @@ const changetoChinese = () => {
     if (enterAmountPlaceholder != null) {
         enterAmountPlaceholder.placeholder = "输入金额";
         enterAmountPlaceholder.style.width = "100%";
+    }
+    if (withdrawMessage != null) {
+        withdrawMessage.innerHTML = "正在提款，请稍候..."
     }
     if (rateExperience != null) {
         rateExperience.innerHTML = "<h1 style='white-space:nowrap'>您如何评价您今天的经历?</h1>"
@@ -168,6 +178,9 @@ const changetoEnglish = () => {
     }
     if (enterAmountPlaceholder != null) {
         enterAmountPlaceholder.placeholder = "Enter amount";
+    }
+    if (withdrawMessage != null) {
+        withdrawMessage.innerHTML = "Withdrawing money, please wait..."
     }
     if (rateExperience != null) {
         rateExperience.innerHTML = "<h1 style='white-space:nowrap'>How would you rate your experience today?</h1>";
