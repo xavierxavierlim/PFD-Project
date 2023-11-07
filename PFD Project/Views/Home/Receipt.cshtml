@@ -3,8 +3,8 @@
 }
 
 <div class="text-center container-fluid">
-    <p class="rTitle" id="">Withdraw Amount: $50</p>
-    <p class="rSub">Would you like a receipt?</p>
+    <p class="rTitle" id="withdrawAmountAmount">Withdraw Amount: $50</p>
+    <p class="rSub" id="receipt">Would you like a receipt?</p>
 </div>
 
 <br />
@@ -17,8 +17,8 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body" style="text-align:center; min-height: 150px;">
-                    <a class="rTitle" asp-controller="Home" asp-action="FeedbackStars" style="font-size:30px; text-decoration:none">Yes</a>
-                    <p class="rCon">(show card balance)</p>
+                    <a class="rTitle" asp-controller="Home" asp-action="FeedbackStars" style="font-size:30px; text-decoration:none" id="yesShow">Yes</a>
+                    <p class="rCon" id="showCardBalance">(show card balance)</p>
                 </div>
             </div>
         </div>
@@ -26,8 +26,8 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body" style="text-align:center; min-height: 150px;">
-                    <a class="rTitle" asp-controller="Home" asp-action="FeedbackStars" style="font-size:30px; text-decoration:none">Yes</a>
-                    <p class="rCon">(hide card balance)</p>
+                    <a class="rTitle" asp-controller="Home" asp-action="FeedbackStars" style="font-size:30px; text-decoration:none" id="yesHide">Yes</a>
+                    <p class="rCon" id="hideCardBalance">(hide card balance)</p>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body" style="text-align:center; min-height: 150px;">
-                    <a class="rTitle" asp-controller="Home" asp-action="FeedbackStars" style="font-size:30px; text-decoration:none">No</a>
+                    <a class="rTitle" asp-controller="Home" asp-action="FeedbackStars" style="font-size:30px; text-decoration:none" id="no">No</a>
                 </div>
             </div>
         </div>

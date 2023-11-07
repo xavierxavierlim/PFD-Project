@@ -15,7 +15,7 @@ const nonCashService = document.getElementById("nonCashService"); // Home.cshtml
 const activateCard = document.getElementById("activateCard"); // Home.cshtml
 const balanceEnquiry = document.getElementById("balanceEnquiry"); // Home.cshtml
 
-// WithdrawAmount
+// WithdrawAmount.cshtml
 const getCashHeader = document.getElementById("getCashHeader"); // WithdrawAmount.cshtml
 const otherAmount = document.getElementById("otherAmount"); // WithdrawAmount.cshtml
 const enterAmountPlaceholder = document.getElementById("enterAmountPlaceholder"); // WithdrawAmount.cshtml
@@ -24,7 +24,13 @@ const enterAmountPlaceholder = document.getElementById("enterAmountPlaceholder")
 const withdrawMessage = document.getElementById("withdrawMessage");
 
 // Receipt.cshtml
-
+const withdrawAmountAmount = document.getElementById("withdrawAmountAmount");
+const receipt = document.getElementById("receipt");
+const yesShow = document.getElementById("yesShow");
+const yesHide = document.getElementById("yesHide");
+const showCardBalance = document.getElementById("showCardBalance");
+const hideCardBalance = document.getElementById("hideCardBalance");
+const no = document.getElementById("no");
 
 
 // FeedbackStars.cshtml
@@ -91,7 +97,28 @@ const changetoChinese = () => {
         enterAmountPlaceholder.style.width = "100%";
     }
     if (withdrawMessage != null) {
-        withdrawMessage.innerHTML = "正在提款，请稍候..."
+        withdrawMessage.innerHTML = "正在提款，请稍候...";
+    }
+    if (withdrawAmountAmount != null) {
+        withdrawAmountAmount.innerHTML = "取款数量: $50";
+    }
+    if (receipt != null) {
+        receipt.innerHTML = "您想要收据吗?";
+    }
+    if (yesShow != null) {
+        yesShow.innerHTML = "是";
+    }
+    if (yesHide != null) {
+        yesHide.innerHTML = "是";
+    }
+    if (showCardBalance != null) {
+        showCardBalance.innerHTML = "(显示卡余额)";
+    }
+    if (hideCardBalance != null) {
+        hideCardBalance.innerHTML = "(隐藏卡余额)";
+    }
+    if (no != null) {
+        no.innerHTML = "不";
     }
     if (rateExperience != null) {
         rateExperience.innerHTML = "<h1 style='white-space:nowrap'>您如何评价您今天的经历?</h1>"
@@ -181,6 +208,27 @@ const changetoEnglish = () => {
     }
     if (withdrawMessage != null) {
         withdrawMessage.innerHTML = "Withdrawing money, please wait..."
+    }
+    if (withdrawAmountAmount != null) {
+        withdrawAmountAmount.innerHTML = "Withdraw Amount: $50";
+    }
+    if (receipt != null) {
+        receipt.innerHTML = "Would you like a receipt?";
+    }
+    if (yesShow != null) {
+        yesShow.innerHTML = "Yes";
+    }
+    if (yesHide != null) {
+        yesHide.innerHTML = "Yes";
+    }
+    if (showCardBalance != null) {
+        showCardBalance.innerHTML = "(show card balance)";
+    }
+    if (hideCardBalance != null) {
+        hideCardBalance.innerHTML = "(hide card balance)";
+    }
+    if (no != null) {
+        no.innerHTML = "No";
     }
     if (rateExperience != null) {
         rateExperience.innerHTML = "<h1 style='white-space:nowrap'>How would you rate your experience today?</h1>";
