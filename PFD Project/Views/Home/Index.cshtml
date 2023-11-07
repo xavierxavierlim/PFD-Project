@@ -3,16 +3,18 @@
 }
 
 <div class="text-center container-fluid">
-    <h1 id="welcomeMessage">Welcome to OCBC!</h1>
+    <p class="rTitle" id="welcomeMessage">Welcome to OCBC!</p>
     <a asp-controller="Home" asp-action="Home"><img src="~/images/qrcode.svg" /></a>
-    <h4 id="scanQRCode">Please scan the QR code or insert card in the reader</h4>
-    <a asp-controller="Home" asp-action="Pin" style="rgba: (0,0,0,0.5)">pin</a>
+    <p class="rCon" id="scanQRCode">Please scan the QR code or insert card in the reader</p>
+    <a asp-controller="Home" asp-action="Pin" class="rCon">pin</a>
 
     <br />
     
 </div>
 
-
+@* 
+Camera feature works + Resizing font with presets & manual adjustment
+*@
 
 
 

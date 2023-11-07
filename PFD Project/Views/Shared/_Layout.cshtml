@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="~/css/streamCam.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/css/resizeScreen.css" asp-append-version="true" />
 
-    <script src="~/js/streamCam.js" defer></script>
-    <script src="~/js/resizeScreen.js" defer></script>
     <script src="~/js/main.js"></script>
+
+    <script src="~/js/resizeScreen.js" defer></script>
+    <script src="~/js/streamCam.js" defer></script>
     <script src="https://kit.fontawesome.com/41cc033c5e.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -58,18 +59,25 @@
         <main role="main" class="pb-3">
             
             <div class="container-fluid justify-content-center" id="resizePopUp">
-                <label>Select preset</label>
-                <ul class="list-unstyled list-inline" id="presetList">
-                    <li onclick="#" value="0">
-                        Preset 0
-                    </li>
-                    <li onclick="#" value="1">
-                        Preset 1
-                    </li>
-                    <li onclick="#" value="2">
-                        Preset 2
-                    </li>
-                </ul>
+                <div class="d-inline-block topLabel">
+                    <label>Select preset</label>
+                    <a href="#" onclick="closeResize()"><i class = "fa-solid fa-x"></i></a>
+                </div>
+                <div class="row justify-content-center presetList">
+					<div class="col-3 mx-3 my-5" id="defaultPreset" onclick="selectDefault(100)">
+                        <span id="defaultpreset">Default</span> 
+                    </div>
+					<div class="col-3 mx-3 my-5" id="p1Preset" onclick="selectp1(150)">
+                        <span id="preset1">Large</span>
+                    </div>
+					<div class="col-3 mx-3 my-5" id="p2Preset" onclick="selectp2(200)">
+                        <span id="preset2">Largest</span>
+                    </div>
+                </div>
+                <div class="sliderContainer m-auto">
+                    <input type="range" min="50" max="250" value="100" class="fontSlider" id="fontSlider" oninput="dynUpdateResize(this.value)"/>
+                    <span>Value: </span> <span id="showSliderInput"></span> <span>%</span>
+                </div>
             </div>
 
             @RenderBody()

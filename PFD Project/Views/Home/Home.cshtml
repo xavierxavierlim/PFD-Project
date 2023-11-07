@@ -3,8 +3,8 @@
 }
 
 <div class="text-center container-fluid">
-    <h1 id="helloMessage">Hello Xavier,</h1>
-    <h4 id="helloQuestion">What would you like to do today?</h4>
+    <p class="rTitle" id="helloMessage">Hello Xavier,</p>
+    <p class="rSub" id="helloQuestion">What would you like to do today?</p>
     <br />
     <br />
 </div>
@@ -13,10 +13,10 @@
     <div class="row" style="display: flex; justify-content: center;">
         <div class="col-md-3">
             <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
-                <div style="font-size: 30px;"><b>Get Cash</b></div>
+                <div style="font-size: 30px;" class="rTitle"><b>Get Cash</b></div>
                 <div class="card border-dark" style="width: 170px; height: 250px;">
                     <div class="card-body" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
-                        <a id="withdrawCash" asp-controller="Home" asp-action="WithdrawAmount" style="font-size: 30px; text-decoration: none">Withdraw Cash</a>
+                        <a class="rTitle" id="withdrawCash" asp-controller="Home" asp-action="WithdrawAmount" style="font-size: 30px; text-decoration: none">Withdraw Cash</a>
                     </div>
                 </div>
             </div>
@@ -28,18 +28,18 @@
 
         <div class="col-md-5">
             <div>
-                <p id="nonCashService" style="text-align: center; padding-bottom: 20px; font-size: 30px;"><b>Non Cash Services</b></p>
+                <p class="rTitle" id="nonCashService" style="text-align: center; padding-bottom: 20px; font-size: 30px;"><b>Non Cash Services</b></p>
             </div>
             <div style="display: flex; justify-content: center; gap: 65px;">
                 <div class="card border-dark" style="width: 170px; height: 250px;">
                     <div class="card-body" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
-                        <a id="activateCard" asp-controller="Home" asp-action="" style="font-size: 30px; text-decoration: none">Activate Card</a>
+                        <a class="rTitle" id="activateCard" asp-controller="Home" asp-action="" style="font-size: 30px; text-decoration: none">Activate Card</a>
                     </div>
                 </div>
 
                 <div class="card border-dark" style="width: 170px; height: 250px;">
                     <div class="card-body" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
-                        <a id="balanceEnquiry" asp-controller="Home" asp-action="" style="font-size: 30px; text-decoration: none">Balance Enquiry</a>
+                        <a class="rTitle" id="balanceEnquiry rTitle" asp-controller="Home" asp-action="" style="font-size: 30px; text-decoration: none">Balance Enquiry</a>
                     </div>
                 </div>
             </div>

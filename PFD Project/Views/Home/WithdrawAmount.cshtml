@@ -3,7 +3,7 @@
 }
 
 <div class="text-center container-fluid">
-    <h1 id="getCashHeader">Get Cash</h1>
+    <p class="getCashHeader rTitle">Get Cash</p>
 </div>
 <br />
 <div class="container">
@@ -11,7 +11,7 @@
         <div class="col-md-6">
             <div class="card border-dark">
                 <div class="card-body" style="text-align: center; min-height: 150px;">
-                    <a asp-controller="Home" asp-action="WithdrawMessage" style="font-size: 30px; text-decoration: none">$50</a>
+                    <a class="rTitle" asp-controller="Home" asp-action="WithdrawMessage" style="font-size: 30px; text-decoration: none">$50</a>
                 </div>
             </div>
             <br>
@@ -19,7 +19,7 @@
         <div class="col-md-6">
             <div class="card border-dark">
                 <div class="card-body" style="text-align: center; min-height: 150px;">
-                    <a asp-controller="Home" asp-action="WithdrawMessage" style="font-size: 30px; text-decoration: none">$80</a>
+                    <a class="rTitle" asp-controller="Home" asp-action="WithdrawMessage" style="font-size: 30px; text-decoration: none">$80</a>
                 </div>
             </div>
             <br>
@@ -27,7 +27,7 @@
         <div class="col-md-6">
             <div class="card border-dark">
                 <div class="card-body" style="text-align: center; min-height: 150px;">
-                    <a asp-controller="Home" asp-action="WithdrawMessage" style="font-size: 30px; text-decoration: none">$100</a>
+                    <a class="rTitle" asp-controller="Home" asp-action="WithdrawMessage" style="font-size: 30px; text-decoration: none">$100</a>
                 </div>
             </div>
             <br>
@@ -35,7 +35,7 @@
         <div class="col-md-6">
             <div class="card border-dark">
                 <div class="card-body" style="text-align: center; min-height: 150px;">
-                    <a asp-controller="Home" asp-action="WithdrawMessage" style="font-size: 30px; text-decoration: none">$150</a>
+                    <a class="rTitle" asp-controller="Home" asp-action="WithdrawMessage" style="font-size: 30px; text-decoration: none">$150</a>
                 </div>
             </div>
             <br>
@@ -50,10 +50,10 @@
         <div class="col-md-12 text-center">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="d-flex align-items-center">
-                    <p id="otherAmount" class="form-control-lg mr-3" style="white-space: nowrap; padding-top:20px;"><b>Other Amount:</b></p>
+                    <p id="otherAmount rSub" class="form-control-lg mr-3" style="white-space: nowrap; padding-top:20px;"><b>Other Amount:</b></p>
                     <form action="@Url.Action("WithdrawMessage", "Home")" method="get" class="d-flex" style="width: 200px;">
                         <div class="d-flex align-items-center">
-                            <input type="text" id="enterAmountPlaceholder" name="amount" class="form-control form-control-lg" style="width: 100%;" placeholder="Enter Amount" required>
+                            <input type="text" id="enterAmountPlaceholder rSub" name="amount" class="form-control form-control-lg" style="width: 100%;" placeholder="Enter Amount" required>
                         </div>
                         &nbsp;
                         <button type="submit" id="submitButton" style="border: none; outline: none; background: transparent;" disabled>
