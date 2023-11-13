@@ -126,29 +126,35 @@ const changetoChinese = () => {
     if (area != null) {
         area.innerHTML = "<h1>我们可以改进哪些领域?</h1>";
     }
+    if (hearmore != null) {
+        hearmore.innerHTML = "我们希望听到您更多关于如何继续改进 ATM 服务的信息";
+    }
+    if (select != null) {
+        select.innerHTML = "请选择以下选项之一";
+    }
     if (slowTransactionProcessing != null) {
-        slowTransactionProcessing.innerHTML = "交易处理速度慢"
+        slowTransactionProcessing.innerHTML = '<i class="fas fa-clock fa-1.5x"></i> 交易处理速度慢';
     }
     if (difficultyWithATM != null) {
-        difficultyWithATM.innerHTML = "使用ATM机有困难"
+        difficultyWithATM.innerHTML = '<i class="fas fa-exclamation-triangle fa-1.5x"></i> 使用ATM机有困难';
     }
     if (displayUninteractive != null) {
-        displayUninteractive.innerHTML = "显示非交互式"
+        displayUninteractive.innerHTML = '<i class="fas fa-desktop fa-1.5x"></i> 显示非交互式';
     }
     if (inadequateLighting != null) {
-        inadequateLighting.innerHTML = "照明不足"
+        inadequateLighting.innerHTML = '<i class="fas fa-lightbulb fa-1.5x"></i> 照明不足';
     }
     if (transactionErrors != null) {
-        transactionErrors.innerHTML = "交易错误"
+        transactionErrors.innerHTML = '<i class="fas fa-exclamation-circle fa-1.5x"></i> 交易错误';
     }
     if (accessibilityIssues != null) {
-        accessibilityIssues.innerHTML = "可访问性问题"
+        accessibilityIssues.innerHTML = '<i class="fas fa-wheelchair fa-1.5x"></i> 可访问性问题';
     }
     if (securityIssues != null) {
-        securityIssues.innerHTML = "安全问题"
+        securityIssues.innerHTML = '<i class="fas fa-shield-alt fa-1.5x"></i> 安全问题';
     }
     if (others != null) {
-        others.innerHTML = "其他"
+        others.innerHTML = '<i class="fas fa-question-circle fa-1.5x"></i> 其他';
     }
     if (thanks != null) {
         thanks.innerHTML = "<h1>感谢您的反馈意见!</h1>"
@@ -236,29 +242,35 @@ const changetoEnglish = () => {
     if (area != null) {
         area.innerHTML = "<h1>What are the areas we can improve on?</h1>";
     }
+    if (hearmore != null) {
+        hearmore.innerHTML = "We wish to hear from you more on how we can continue improving our ATM services";
+    }
+    if (select != null) {
+        select.innerHTML = "Please select one of the options below";
+    }
     if (slowTransactionProcessing != null) {
-        slowTransactionProcessing.innerHTML = "Slow transaction processing";
+        slowTransactionProcessing.innerHTML = '<i class="fas fa-clock fa-1.5x"></i> Slow transaction processing';
     }
     if (difficultyWithATM != null) {
-        difficultyWithATM.innerHTML = "Difficulty using the ATM"
+        difficultyWithATM.innerHTML = '<i class="fas fa-exclamation-triangle fa-1.5x"></i> Difficulty using the ATM';
     }
     if (displayUninteractive != null) {
-        displayUninteractive.innerHTML = "Display uninteractive"
+        displayUninteractive.innerHTML = '<i class="fas fa-desktop fa-1.5x"></i> Display uninteractive';
     }
     if (inadequateLighting != null) {
-        inadequateLighting.innerHTML = "Inadequate Lighting"
+        inadequateLighting.innerHTML = '<i class="fas fa-lightbulb fa-1.5x"></i> Inadequate Lighting';
     }
     if (transactionErrors != null) {
-        transactionErrors.innerHTML = "Transaction Errors"
+        transactionErrors.innerHTML = '<i class="fas fa-exclamation-circle fa-1.5x"></i> Transaction Errors';
     }
     if (accessibilityIssues != null) {
-        accessibilityIssues.innerHTML = "ccessibility Issues"
+        accessibilityIssues.innerHTML = '<i class="fas fa-wheelchair fa-1.5x"></i> Accessibility Issues';
     }
     if (securityIssues != null) {
-        securityIssues.innerHTML = "Security Issues"
+        securityIssues.innerHTML = '<i class="fas fa-shield-alt fa-1.5x"></i> Security Issues';
     }
     if (others != null) {
-        others.innerHTML = "Others"
+        others.innerHTML = '<i class="fas fa-question-circle fa-1.5x"></i> Others';
     }
     if (thanks != null) {
         thanks.innerHTML = "<h1>Thank you for your feedback!</h1>"
