@@ -1,10 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Pin";
 }
+
 <div class="text-center container-fluid pinContainer">
     <p class="rTitle" id="pin">Sign in with PIN!</p>
     <p class="rSub" id="keyPin">Please key in your pin with the keypad:</p>
 
+    <!--
     <div class="pin-input">
         <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" id="firstDigit" />
         <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" />
@@ -13,6 +15,22 @@
         <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" />
         <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" id="lastDigit" onkeydown="checkEnter(event)" />
     </div>
+    -->
+
+    <form asp-action="Pin" method="post">
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="pin"><b>Login ID:</b></label>
+            <div class="col-md-9">
+                <input type="number" class="form-control" name="pin" placeholder="Enter your Login ID" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Login <i class="fa-solid fa-right-to-bracket fa-sm"></i></button>
+        </div>
+
+        <span style="color:red;">@TempData["Message"]</span>
+    </form>
 </div>
 
 <script>
