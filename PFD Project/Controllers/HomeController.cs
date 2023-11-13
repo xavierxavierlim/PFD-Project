@@ -22,7 +22,7 @@ namespace PFD_Project.Controllers
         {
             return RedirectToAction("Index");
         }
-        public IActionResult Pin()
+        public ActionResult Pin()
         {
             return View();
         }

@@ -297,14 +297,14 @@ function toggleLanguage() {
     event.preventDefault();
 }
 
-document.getElementById('enterAmountPlaceholder').addEventListener('input', function () {
-    const amount = this.value.trim();
-    const submitButton = document.getElementById('submitButton');
+//document.getElementById('enterAmountPlaceholder').addEventListener('input', function () {
+//    const amount = this.value.trim();
+//    const submitButton = document.getElementById('submitButton');
 
-    // Check if the input is a valid number with or without a leading $
-    if (/^\$?\d+$/.test(amount)) {
-        submitButton.removeAttribute('disabled');
-    } else {
-        submitButton.setAttribute('disabled', 'true');
-    }
-});
+//    // Check if the input is a valid number with or without a leading $
+//    if (/^\$?\d+$/.test(amount)) {
+//        submitButton.removeAttribute('disabled');
+//    } else {
+//        submitButton.setAttribute('disabled', 'true');
+//    }
+//});

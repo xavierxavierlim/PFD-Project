@@ -1,13 +1,9 @@
 ﻿
 
 var popup = false;
-var sliderValue = document.getElementById("showSliderInput");
-var slider = document.getElementById("fontSlider");
 var defaultP = document.getElementById("defaultPreset");
 var preset1 = document.getElementById("p1Preset");
 var preset2 = document.getElementById("p2Preset");
-
-sliderValue.innerHTML = slider.value;
 
 const closeResize = () => {
     document.getElementById("resizePopUp").style.display = "none";
@@ -21,13 +17,11 @@ function toggleResize() {
     popup ? closeResize() : openResize();
 }
 function updateResize(value) {
-    console.log("update!" + value);
-    //document.getElementById("").style.fontSize = value + "%";
+    console.log("update:" + value);
     sessionStorage.setItem("fontSize", String(value));
     var sub = value + 50;
     var title = value + 75;
     if (document.getElementsByClassName("rTitle") != null) {
-        //document.getElementsByClassName("rTitle").style.fontSize = title + "%";
         for (var i = 0, len = document.getElementsByClassName("rTitle").length; i < len; i++) {
             document.getElementsByClassName("rTitle")[i].style.fontSize = title + "%"
         }
@@ -45,14 +39,7 @@ function updateResize(value) {
         }
     };
 }
-function dynUpdateResize(value) {
-    sliderValue.innerHTML = value;
-    defaultP.style.backgroundColor = "";
-    preset1.style.backgroundColor = "";
-    preset2.style.backgroundColor = "";
-    sessionStorage.setItem("Preset", String(value));
-    updateResize(value);
-}
+
 function selectDefault(value) {
     defaultP.style.backgroundColor = "rgb(199, 212, 255)";
     preset1.style.backgroundColor = "";
@@ -87,16 +74,13 @@ if (sessionStorage.getItem("Preset") == null) {
     selectDefault(100);
 }
 else {
-    if (sessionStorage.getItem("Preset") == "0") {
-        selectDefault(100);
-    }
-    else if (sessionStorage.getItem("Preset") == "1") {
+    if (sessionStorage.getItem("Preset") == "1") {
         selectp1(150);
     }
     else if (sessionStorage.getItem("Preset") == "2") {
         selectp2(200);
     }
     else {
-        dynUpdateResize(Number(sessionStorage.getItem("Preset")));
+        selectDefault(100);
     }
 }

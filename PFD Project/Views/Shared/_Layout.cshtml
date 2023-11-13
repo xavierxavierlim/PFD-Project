@@ -9,20 +9,19 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/streamCam.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/css/resizeScreen.css" asp-append-version="true" />
-
-    <script src="~/js/main.js"></script>
+    <script src="~/js/main.js" defer></script>
     <script src="~/js/site.js" defer></script>
     <script src="~/js/resizeScreen.js" defer></script>
     <script src="~/js/streamCam.js" defer></script>
     <script src="https://kit.fontawesome.com/41cc033c5e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <div class="row my-3 mx-2">
+	<header style="position: absolute; z-index: 1; width: 100%;top: 0; transform: translate(0, 0);">
+        <div class="row my-3 mx-2" >
             <div class="col text-left">
                 <ul class="navbar-nav list-group-horizontal">
                     <li class="nav-item mx-1">
-                        <a href="javascript:history.go(-1)"><i class="fa-solid fa-backward fa-2xl" style="color: #000000; padding:20px"></i></a>
+                        <a href="javascript:history.go(-1)"><i class="fa-solid fa-backward fa-2xl" style="color: #000000; padding:20px;"></i></a>
                     </li>
                     <li class="nav-item mx-1">
                         <a asp-area="" asp-controller="Home" asp-action="Index" onclick="logOut()"><i class="fa-solid fa-right-from-bracket fa-2xl" style="color: #000000; padding:20px"></i></a>
@@ -74,26 +73,19 @@
                         <span id="preset2">Largest</span>
                     </div>
                 </div>
-                <div class="sliderContainer m-auto">
-                    <input type="range" min="50" max="250" value="100" class="fontSlider" id="fontSlider" oninput="dynUpdateResize(this.value)"/>
-                    <span>Value: </span> <span id="showSliderInput"></span> <span>%</span>
-                </div>
             </div>
 
             @RenderBody()
         </main>
     </div>
 
-    <footer class="footer text-muted" style="position:absolute;bottom:0;padding:10px">
-        <b><p id="reminderText"></p></b>
+    <footer class="footer text-muted">
+        <span id="reminderText"></span>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-@*     <script src="~/js/site.js" asp-append-version="true"></script> *@
     <script src="~/js/reminders.js" asp-append-version="true"></script>
-    
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

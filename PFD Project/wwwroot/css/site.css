@@ -7,30 +7,72 @@ html {
     font-size: 16px;
   }
 }
-
+@font-face {
+    font-family: 'geomanistregular';
+    src: url('../font/geomanist-regular-webfont.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: #f5f5f5;
+    background-image: repeating-radial-gradient( circle at 0 0, transparent 0, #f5f5f5 95px ), repeating-linear-gradient( #e7e7e755, #e7e7e7 );
+    overflow: hidden;
 }
-
+.logoContainer {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 60%);
+    animation: introAnimation 0.55s ease-in;
+}
+#logo {
+    position: relative;
+}
+.logoText {
+    font-family: geomanistregular, Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: #da291c;
+    margin-top: 8px;
+    margin-bottom: 40px;
+    position: relative;
+}
+.logoInstruction {
+    color: darkslategray;
+    font-size: 40px;
+    font-weight: 500;
+    display: inline-block;
+    /*animation: hoverAnimation 10s infinite;*/
+    position: relative;
+    animation: hoverAnimation 10s infinite;
+}
+.pinContainer {
+    margin-top: 159px;
+}
 .pin-input {
     display: flex;
-    justify-content: space-between; /* Center the input fields horizontally */
+    justify-content: center; /* Center the input fields horizontally */
     align-items: center; /* Center the input fields vertically */
-    padding: 150px;
+    position: relative;
+
+    left: 50%;
+    transform: translate(-50%, 100%);
 }
 
 .pin-digit {
     border: none;
-    border-bottom: 2px solid black;
-    width: 60px; /* Adjust the width as needed */
+    border-bottom: 4px solid black;
+    border-radius: 0px;
+    background: transparent;
+    width: 62px; /* Adjust the width as needed */
     text-align: center;
-    margin: 0 5px; /* Adjust the margin as needed */
-    font-size: 30px;
+    margin-left: 16px;
+    margin-right: 16px;
+    font-size: 45px;
     outline: none;
 }
 
@@ -73,4 +115,83 @@ body {
 .feedback-option:hover {
     background-color: rgb(138, 138, 138);
     color: rgb(30, 30, 30)
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    margin: 10px;
+}
+#reminderText {
+    font-weight: 600;
+    font-size: 18px;
+}
+.left {
+    background: rgb(75, 75, 75, 0.50);
+    height: 100%;
+    z-index: 3;
+}
+.intLeft {
+    position: relative;
+    transform: translate(15%, 0);
+}
+.functionTitle {
+    margin-left: 5px;
+    margin-bottom: 20px;
+}
+.amountCard {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-radius: 15px;
+    background: #da291c;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+.amountCard a {
+    color: lightgray;
+    display:inline-block;
+    width:100%;
+    height:100%;
+}
+@keyframes introAnimation {
+    0% {
+        opacity: 0%;
+        transform: translate(-50%, 65%);
+    }
+    25% {
+        opacity: 15%;
+        transform: translate(-50%, 64%);
+    }
+    50% {
+        opacity: 35%;
+        transform: translate(-50%, 63%);
+    }
+    75% {
+        opacity: 75%;
+        transform: translate(-50%, 62%);
+    }
+    100% {
+        opacity: 100%;
+        transform: translate(-50%, 60%);
+    }
+}
+@keyframes hoverAnimation {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-7px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(-7px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }

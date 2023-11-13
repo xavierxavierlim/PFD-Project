@@ -1,3 +1,4 @@
-﻿const logOut = () => {
+﻿
+const logOut = () => {
     sessionStorage.clear();
-}
+};

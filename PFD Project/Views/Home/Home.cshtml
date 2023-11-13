@@ -2,16 +2,55 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="text-center container-fluid">
+@* <div class="text-center container-fluid">
     <p class="rTitle" id="helloMessage">Hello Xavier,</p>
     <p class="rSub" id="helloQuestion">What would you like to do today?</p>
     <br />
     <br />
-</div>
+</div> *@
 
-<div class="container">
-    <div class="row" style="display: flex; justify-content: center;">
-        <div class="col-md-3">
+<div class="row">
+    <div class="left col-6">
+        <div class="intLeft">
+            <div class="rTitle functionTitle">Get Cash</div>
+            <div class="container withdrawGrid">
+                <div class="row">
+                    <div class="col-2 m-1 amountCard">
+                        <a class="rTitle text-decoration-none" asp-controller="Home" asp-action="WithdrawMessage">$50</a>
+                    </div>
+                    <div class="col-2 m-1 amountCard">
+                        <a class="rTitle text-decoration-none" asp-controller="Home" asp-action="WithdrawMessage">$80</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2 m-1 amountCard">
+                        <a class="rTitle text-decoration-none" asp-controller="Home" asp-action="WithdrawMessage">$100</a>
+                    </div>
+                    <div class="col-2 m-1 amountCard">
+                        <a class="rTitle text-decoration-none" asp-controller="Home" asp-action="WithdrawMessage">$500</a>
+                    </div>
+                </div>
+            </div>
+            @* <div class="row">
+                <div class="col">
+                    <form action="@Url.Action("WithdrawMessage", "Home")" method="get">
+                        <div class="input-group">
+                            <input type="text" id="enterAmountPlaceholder" name="amount" class="form-control rSub" placeholder="Enter Amount" aria-label="Enter Amount" aria-describedby="basic-addon2" required>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" disabled>Enter</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div> *@
+        </div>
+    </div>
+    <div class="right col-6">
+        <div class="intRight">
+            <div class="rTitle functionTitle">Non-Cash Services</div>
+        </div>
+    </div>
+        @* <div class="col-md-3">
             <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
                 <div style="font-size: 30px;" class="rTitle" id="getCash"><b>Get Cash</b></div>
                 <div class="card border-dark" style="width: 180px; height: 250px;">
@@ -20,13 +59,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> *@
 
-        <div class="col-md-1">
+        @* <div class="col-md-1">
             <div style="border-left: 2px solid black; height: 100%;"></div>
-        </div>
+        </div> *@
 
-        <div class="col-md-5">
+        @* <div class="col-md-5">
             <div>
                 <p class="rTitle" id="nonCashService" style="text-align: center; padding-bottom: 20px; font-size: 30px;"><b>Non Cash Services</b></p>
             </div>
@@ -43,6 +82,18 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div> *@
 </div>
+<script>
+    document.getElementById('enterAmountPlaceholder').addEventListener('input', function () {
+        const amount = this.value.trim();
+        const submitButton = document.getElementById('submitButton');
+
+        // Check if the input is a valid number with or without a leading $
+        if (/^\$?\d+$/.test(amount)) {
+            submitButton.removeAttribute('disabled');
+        } else {
+            submitButton.setAttribute('disabled', 'true');
+        }
+    });
+</script>
