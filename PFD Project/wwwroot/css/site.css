@@ -50,8 +50,8 @@ body {
     position: relative;
     animation: hoverAnimation 10s infinite;
 }
-.pinContainer {
-    margin-top: 159px;
+.pinContainer, .homeContainer {
+    margin-top: 110px;
 }
 .pin-input {
     display: flex;
@@ -126,22 +126,23 @@ body {
     font-weight: 600;
     font-size: 18px;
 }
-.left {
-    background: rgb(75, 75, 75, 0.50);
-    height: 100%;
-    z-index: 3;
-}
-.intLeft {
-    position: relative;
-    transform: translate(15%, 0);
-}
 .functionTitle {
-    margin-left: 5px;
-    margin-bottom: 20px;
+    display: block;
+    margin-left: 12px;
+}
+.cardGrid {
+    border: 2px solid black;
+    margin-top: 30px;
+    height: 350px;
+    max-width: 550px;
+}
+.cardContent {
+    position: relative;
+    top: 5%;
+    left: 5%;
 }
 .amountCard {
-    display: flex;
-    justify-content: center;
+    display: inline-block;
     text-align: center;
     border-radius: 15px;
     background: #da291c;
@@ -149,6 +150,8 @@ body {
     padding-bottom: 18px;
     padding-left: 9px;
     padding-right: 9px;
+    height: 80px;
+    width: 120px;
 }
 .amountCard a {
     color: lightgray;
