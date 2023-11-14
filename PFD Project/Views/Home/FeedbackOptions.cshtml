@@ -34,32 +34,35 @@
         <p class="rTitle" id="area">What are the areas we can improve on?</p>
         <p class="text" id="hearmore">We wish to hear from you more on how we can continue improving our ATM services.</p>
         <p class="text" id="select">Please select one of the options below</p>
-        <div class="feedback-container" style="margin-top: 10px;">
-            <a class="rCon feedback-option" id="slowTransactionProcessing" asp-controller="Home" asp-action="Thanks">
-                <i class="fas fa-clock fa-1.5x"></i>Slow transaction processing
-            </a>
-            <a class="rCon feedback-option" id="difficultyWithATM" asp-controller="Home" asp-action="Thanks">
-                <i class="fas fa-exclamation-triangle fa-1.5x"></i>Difficulty using the ATM
-            </a>
-            <a class="rCon feedback-option" id="displayUninteractive" asp-controller="Home" asp-action="Thanks">
-                <i class="fas fa-desktop fa-1.5x"></i>Display uninteractive
-            </a>
-            <a class="rCon feedback-option" id="inadequateLighting" asp-controller="Home" asp-action="Thanks">
-                <i class="fas fa-lightbulb fa-1.5x"></i>Inadequate Lighting
-            </a>
-            <a class="rCon feedback-option" id="transactionErrors" asp-controller="Home" asp-action="Thanks">
-                <i class="fas fa-exclamation-circle fa-1.5x"></i>Transaction Errors
-            </a>
-            <a class="rCon feedback-option" id="accessibilityIssues" asp-controller="Home" asp-action="Thanks">
-                <i class="fas fa-wheelchair fa-1.5x"></i>Accessibility Issues
-            </a>
-            <a class="rCon feedback-option" id="securityIssues" asp-controller="Home" asp-action="Thanks">
-                <i class="fas fa-shield-alt fa-1.5x"></i>Security Issues
-            </a>
-            <a class="rCon feedback-option" id="others" asp-controller="Home" asp-action="Thanks">
-                <i class="fas fa-question-circle fa-1.5x"></i>Others
-            </a>
-        </div>
+        
+        <form asp-controller="Home" asp-action="FeedbackOptions" method="post">
+            <div class="feedback-container" style="margin-top: 10px;">
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Slow Transaction Processing">
+                    <i class="fas fa-clock fa-1.5x"></i> Slow Transaction Processing
+                </button>
+                <button id="difficultyWithATM" class="rCon feedback-option" asp-route-description="Difficulty Using ATM">
+                    <i class="fas fa-exclamation-triangle fa-1.5x"></i>Difficulty Using ATM
+                </button>
+                <button id="displayUninteractive" class="rCon feedback-option" asp-route-description="Display Uninteractive">
+                    <i class="fas fa-desktop fa-1.5x"></i>Display Uninteractive
+                </button>
+                <button id="inadequateLighting" class="rCon feedback-option" asp-route-description="Inadequate Lighting">
+                    <i class="fas fa-lightbulb fa-1.5x"></i>Inadequate Lighting
+                </button>
+                <button id="transactionErrors" class="rCon feedback-option" asp-route-description="Transaction Errors">
+                    <i class="fas fa-exclamation-circle fa-1.5x"></i>Transaction Errors
+                </button>
+                <button id="accessibilityIssues" class="rCon feedback-option" asp-route-description="Accessibility Issues">
+                    <i class="fas fa-wheelchair fa-1.5x"></i>Accessibility Issues
+                </button>
+                <button id="securityIssues" class="rCon feedback-option" asp-route-description="Security Issues">
+                    <i class="fas fa-shield-alt fa-1.5x"></i>Security Issues
+                </button>
+                <button id="others" class="rCon feedback-option" asp-route-description="Hygiene Issues">
+                    <i class="fas fa-question-circle fa-1.5x"></i>Hygiene Issues
+                </button>
+            </div>
+        </form>
     </div>
 
 </body>

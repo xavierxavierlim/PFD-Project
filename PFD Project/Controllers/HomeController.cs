@@ -3,6 +3,7 @@ using PFD_Project.Models;
 using System.Diagnostics;
 using PFD_Project.DAL;
 using PFD_Project.Models;
+using System.Net.NetworkInformation;
 
 namespace PFD_Project.Controllers
 {
@@ -10,6 +11,7 @@ namespace PFD_Project.Controllers
     {
         private UsersDAL usersContext = new UsersDAL();
 		private TransactionsDAL transactionContext = new TransactionsDAL();
+        private FeedbackDAL feedbackContext = new FeedbackDAL();
 
 		private readonly ILogger<HomeController> _logger;
 
@@ -26,6 +28,7 @@ namespace PFD_Project.Controllers
         {
             return RedirectToAction("Index");
         }
+
         public ActionResult Pin()
         {
             return View();
@@ -57,6 +60,7 @@ namespace PFD_Project.Controllers
             Transactions newTrans = new Transactions();
             return View(newTrans);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Home(decimal amount, Transactions newTrans)
@@ -68,7 +72,7 @@ namespace PFD_Project.Controllers
                 newTrans.Amount = amount;
                 newTrans.TransactionType = "Withdraw";
                 newTrans.TransactionID = transactionContext.addTransaction(newTrans);
-                return RedirectToAction();
+                return RedirectToAction("WithdrawMessage");
             }
             else
             {
@@ -78,12 +82,11 @@ namespace PFD_Project.Controllers
             }
 
         }
+
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        
+        }       
 
         public IActionResult Receipt()
         {
@@ -95,14 +98,50 @@ namespace PFD_Project.Controllers
             return View();
         }
 
-        public IActionResult FeedbackStars()
+        public ActionResult FeedbackStars()
         {
-            return View();
+            Feedback feedback = new Feedback();
+            return View(feedback);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult FeedbackStars(int star, Feedback newFeedback)
+        {
+            if (ModelState.IsValid)
+            {
+                newFeedback.Rating = star;
+                newFeedback.UserID = Convert.ToInt32(HttpContext.Session.GetInt32("userID"));
+                newFeedback.FeedbackID = feedbackContext.addFeedbackStars(newFeedback);
+                HttpContext.Session.SetInt32("FeedbackID", newFeedback.FeedbackID);
+                return RedirectToAction("FeedbackOptions");
+            }
+            else
+            {
+                Feedback newFeedbac = new Feedback();
+                return View(newFeedback);
+            }
         }
 
         public IActionResult FeedbackOptions()
         {
             return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult FeedbackOptions(string description, Feedback newFeedback)
+        {
+            if (ModelState.IsValid)
+            {
+                feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                return RedirectToAction("Thanks");
+            }
+            else
+            {
+                return RedirectToAction("FeedbackOptions");
+            }
         }
 
         public IActionResult Thanks()
