@@ -33,7 +33,10 @@ namespace PFD_Project.Controllers
         {
             return View();
         }
-
+        public ActionResult BalanceEnquiry()
+        {
+            return View();
+        }
         [HttpPost]
         public ActionResult Pin(IFormCollection formData)
         {
