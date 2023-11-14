@@ -76,6 +76,29 @@ namespace PFD_Project.DAL
             conn.Close();
             return username;
         }
+        public int GetUserID(string pin)
+        {
+            int userID = 0;
+            //Create a SqlCommand object from connection object
+            SqlCommand cmd = conn.CreateCommand();
+            //Specify the SELECT SQL statement 
+            cmd.CommandText = @"SELECT UserID FROM Users WHERE Pin = @pin";
+            cmd.Parameters.AddWithValue("@pin", pin);
+            //Open a database connection
+            conn.Open();
+            //Execute the SELECT SQL through a DataReader
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    userID = reader.GetInt32(0);
+                }
+            }
+            reader.Close();
+            conn.Close();
+            return userID;
+        }
     }
 }
 

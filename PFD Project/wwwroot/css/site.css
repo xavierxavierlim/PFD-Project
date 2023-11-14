@@ -130,16 +130,26 @@ body {
     display: block;
     margin-left: 12px;
 }
+.left, .right {
+    display: flex;
+    justify-content: center;
+}
 .cardGrid {
-    border: 2px solid black;
+
     margin-top: 30px;
     height: 350px;
     max-width: 550px;
 }
-.cardContent {
+.cardContentLeft {
     position: relative;
     top: 5%;
     left: 5%;
+}
+.cardContentRight {
+    position: relative;
+    top: 5%;
+    right: 5%;
+
 }
 .amountCard {
     display: inline-block;
@@ -150,14 +160,25 @@ body {
     padding-bottom: 18px;
     padding-left: 9px;
     padding-right: 9px;
-    height: 80px;
-    width: 120px;
+    height: 100px;
+    width: 160px;
 }
-.amountCard a {
+.amountCard input {
+    margin-top: 7px;
     color: lightgray;
-    display:inline-block;
-    width:100%;
-    height:100%;
+    background: none;
+    border: none;
+}
+.noncashContent {
+    display: block;
+    height: 200px;
+    width: 140px;
+    margin-right: 40px;
+    position: relative;
+    left: 50px;
+    border: 2px solid darkslategray;
+    border-radius: 8px;
+    /*transform: translate(0, 0);*/
 }
 @keyframes introAnimation {
     0% {

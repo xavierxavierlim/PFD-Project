@@ -9,8 +9,9 @@ namespace PFD_Project.Controllers
     public class HomeController : Controller
     {
         private UsersDAL usersContext = new UsersDAL();
+		private TransactionsDAL transactionContext = new TransactionsDAL();
 
-        private readonly ILogger<HomeController> _logger;
+		private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -35,13 +36,13 @@ namespace PFD_Project.Controllers
         {
             string pin = formData["pin"].ToString();
             string username = usersContext.GetUserName(pin);
-
+            int userID = usersContext.GetUserID(pin);
             if (username != null)
             {
                 HttpContext.Session.SetString("username", username);
+                HttpContext.Session.SetInt32("userID", userID);
                 return RedirectToAction("Home");
             }
-
             else
             {
                 TempData["Message"] = "Invalid pin";
@@ -49,14 +50,34 @@ namespace PFD_Project.Controllers
             }
         }
 
-        public IActionResult Home()
+        public ActionResult Home()
         {
             string name = HttpContext.Session.GetString("username");
             ViewData["Name"] = name;
-
-            return View();
+            Transactions newTrans = new Transactions();
+            return View(newTrans);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Home(decimal amount, Transactions newTrans)
+        {
+            if (ModelState.IsValid)
+            {
+                newTrans.UserID = Convert.ToInt32(HttpContext.Session.GetInt32("userID"));
+                newTrans.TransactionDate = DateTime.Now;
+                newTrans.Amount = amount;
+                newTrans.TransactionType = "Withdraw";
+                newTrans.TransactionID = transactionContext.addTransaction(newTrans);
+                return RedirectToAction();
+            }
+            else
+            {
+                Transactions newTran = new Transactions();
 
+				return View(newTran);
+            }
+
+        }
         public IActionResult Privacy()
         {
             return View();
