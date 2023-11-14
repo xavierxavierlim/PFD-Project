@@ -10,9 +10,9 @@
     <br />
     <br />
 </div> *@
-
+<div class="background"></div>
 <div class="homeContainer row">
-
+    
     <div class="left col-6">
         <div class="intLeft">
             <span class="rSub functionTitle">Get Cash</span>
@@ -58,50 +58,20 @@
             <div class="cardGrid">
                 <div class="cardContentRight">
 					<div class="row">
-						<button class="noncashContent">
+						<button class="noncashContent rTitle" asp-controller="Home" asp-action="">
                             Activate Card
                         </button>
-                        <button class="noncashContent">
-                            Activate Card
+                        <button class="noncashContent rTitle" asp-controller="Home" asp-action="BalanceEnquiry">
+                            Balance Enquiry
                         </button>
+                        @* <a style="display:flex;">
+                            <i class="fa-solid fa-chevron-right fa-2xl"></i>
+                        </a> *@
                     </div>
                 </div>
             </div>
         </div>
     </div>
-        @* <div class="col-md-3">
-            <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
-                <div style="font-size: 30px;" class="rTitle" id="getCash"><b>Get Cash</b></div>
-                <div class="card border-dark" style="width: 180px; height: 250px;">
-                    <div class="card-body" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
-                        <a class="rTitle" id="withdrawCash" asp-controller="Home" asp-action="WithdrawAmount" style="font-size: 30px; text-decoration: none">Withdraw Cash</a>
-                    </div>
-                </div>
-            </div>
-        </div> *@
-
-        @* <div class="col-md-1">
-            <div style="border-left: 2px solid black; height: 100%;"></div>
-        </div> *@
-
-        @* <div class="col-md-5">
-            <div>
-                <p class="rTitle" id="nonCashService" style="text-align: center; padding-bottom: 20px; font-size: 30px;"><b>Non Cash Services</b></p>
-            </div>
-            <div style="display: flex; justify-content: center; gap: 65px;">
-                <div class="card border-dark" style="width: 170px; height: 250px;">
-                    <div class="card-body" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
-                        <a class="rTitle" id="activateCard" asp-controller="Home" asp-action="" style="font-size: 30px; text-decoration: none">Activate Card</a>
-                    </div>
-                </div>
-
-                <div class="card border-dark" style="width: 170px; height: 250px;">
-                    <div class="card-body" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
-                        <a class="rTitle" id="balanceEnquiry" asp-controller="Home" asp-action="" style="font-size: 30px; text-decoration: none">Balance Enquiry</a>
-                    </div>
-                </div>
-            </div>
-        </div> *@
 </div>
 <script>
     document.getElementById('enterAmountPlaceholder').addEventListener('input', function () {
