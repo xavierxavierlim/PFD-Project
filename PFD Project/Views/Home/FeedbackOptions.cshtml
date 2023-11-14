@@ -1,18 +1,67 @@
-﻿@{
-    ViewData["Title"] = "Feedback Options";
-}
+﻿<!DOCTYPE html>
+<html lang="en">
 
-<div class="text-center container-fluid">
-    <p class="rTitle" id="area">What are the areas we can improve on?</p>
-    <grid class="feedback-container">
-        <a class="rCon feedback-option" id="slowTransactionProcessing" asp-controller="Home" asp-action="Thanks">Slow transaction processing</a>
-        <a class="rCon feedback-option" id="difficultyWithATM" asp-controller="Home" asp-action="Thanks">Difficulty using the ATM</a>
-        <a class="rCon feedback-option" id="displayUninteractive" asp-controller="Home" asp-action="Thanks">Display uninteractive</a>
-        <a class="rCon feedback-option" id="inadequateLighting" asp-controller="Home" asp-action="Thanks">Inadequate Lighting</a>
-        <a class="rCon feedback-option" id="transactionErrors" asp-controller="Home" asp-action="Thanks">Transaction Errors</a>
-        <a class="rCon feedback-option" id="accessibilityIssues" asp-controller="Home" asp-action="Thanks">Accessibility Issues</a>
-        <a class="rCon feedback-option" id="securityIssues" asp-controller="Home" asp-action="Thanks">Security Issues</a>
-		<a class="rCon feedback-option" id="others" asp-controller="Home" asp-action="Thanks">Others</a>
-    </grid>
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Options</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iZkWBLJO6NDO7d+2PyqgYYx/8me5U8UsojBme/HZFQK3JSKgVI5PQm2rN" crossorigin="anonymous">
+    <style>
+        .feedback-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 0 auto;
+            margin-left: 85px;
+        }
 
+        .feedback-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 10px; /* Adjust the margin as needed */
+            padding: 10px; /* Add padding for better spacing */
+            width: 120px; /* Adjust the width */
+            height: 120px; /* Adjust the height */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="text-center container-fluid" style="margin-top: 80px;">
+        <p class="rTitle" id="area">What are the areas we can improve on?</p>
+        <p class="text" id="hearmore">We wish to hear from you more on how we can continue improving our ATM services.</p>
+        <p class="text" id="select">Please select one of the options below</p>
+        <div class="feedback-container" style="margin-top: 10px;">
+            <a class="rCon feedback-option" id="slowTransactionProcessing" asp-controller="Home" asp-action="Thanks">
+                <i class="fas fa-clock fa-1.5x"></i>Slow transaction processing
+            </a>
+            <a class="rCon feedback-option" id="difficultyWithATM" asp-controller="Home" asp-action="Thanks">
+                <i class="fas fa-exclamation-triangle fa-1.5x"></i>Difficulty using the ATM
+            </a>
+            <a class="rCon feedback-option" id="displayUninteractive" asp-controller="Home" asp-action="Thanks">
+                <i class="fas fa-desktop fa-1.5x"></i>Display uninteractive
+            </a>
+            <a class="rCon feedback-option" id="inadequateLighting" asp-controller="Home" asp-action="Thanks">
+                <i class="fas fa-lightbulb fa-1.5x"></i>Inadequate Lighting
+            </a>
+            <a class="rCon feedback-option" id="transactionErrors" asp-controller="Home" asp-action="Thanks">
+                <i class="fas fa-exclamation-circle fa-1.5x"></i>Transaction Errors
+            </a>
+            <a class="rCon feedback-option" id="accessibilityIssues" asp-controller="Home" asp-action="Thanks">
+                <i class="fas fa-wheelchair fa-1.5x"></i>Accessibility Issues
+            </a>
+            <a class="rCon feedback-option" id="securityIssues" asp-controller="Home" asp-action="Thanks">
+                <i class="fas fa-shield-alt fa-1.5x"></i>Security Issues
+            </a>
+            <a class="rCon feedback-option" id="others" asp-controller="Home" asp-action="Thanks">
+                <i class="fas fa-question-circle fa-1.5x"></i>Others
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>

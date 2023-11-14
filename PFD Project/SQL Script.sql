@@ -24,3 +24,8 @@ CREATE TABLE Transactions (
 	TransactionDate datetime NOT NULL,
 	FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
+
+INSERT INTO Users
+SELECT 1, 'Xavier', '123456', 500, BulkColumn
+FROM Openrowset ( Bulk 'C:\Users\xavie\OneDrive\Pictures\Camera Roll\WIN_20231102_15_21_04_Pro.jpg', Single_Blob) as img;
+
