@@ -67,7 +67,18 @@ function detectface() {
             context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
             context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
         });
-        console.log(event.data.length);
+        if (event.data.length === 0) {
+            console.log("No face detected");
+        }
+        else if (event.data.length === 1) {
+            console.log("1 face detected")
+        }
+        else if (event.data.length > 1) {
+            console.log("More than one face detected");
+        }
+        else {
+            console.log(event.data.length);
+        }
     });
 
     var gui = new dat.GUI();
