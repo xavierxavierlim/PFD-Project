@@ -1,0 +1,29 @@
+﻿@using System.Security.Claims
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>Authenticated!</h1>
+    <p>
+        Hello, @User.FindFirstValue("sub")
+    </p>
+}
+else
+{
+    <h1>Unauthenticated</h1>
+}
+
+<ul class="navbar-nav flex-grow-1">
+	<li class="nav-item">
+		<a class="nav-link text-dark" asp-area="" asp-controller="Fingerprint" asp-action="Index">Home</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link text-dark" asp-area="" asp-controller="Fingerprint" asp-action="StartRegistration">Register</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link text-dark" asp-area="" asp-controller="Fingerprint" asp-action="Secure">Login</a>
+	</li>
+</ul>
