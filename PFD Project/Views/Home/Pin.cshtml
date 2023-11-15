@@ -1,10 +1,11 @@
-﻿@{
+﻿@model PFD_Project.Models.LoginModel
+
+@{
     ViewData["Title"] = "Pin";
 }
 
 <div class="text-center container-fluid pinContainer">
-    <p class="rTitle" id="pin">Sign in with PIN!</p>
-    <p class="rSub" id="keyPin">Please key in your pin with the keypad:</p>
+    <p class="rTitle" id="pin">Please key in your PIN:</p>
 
     <form asp-action="Pin" method="post">
         <div class="pin-input">
@@ -15,13 +16,35 @@
             <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" name="pin5" />
             <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" id="lastDigit" name="pin6"/>
         </div>
-        <button class="btn btn-primary" type="submit">Login <i class="fa-solid fa-right-to-bracket fa-sm"></i></button>
+        <button class="btn btn-primary" style="display:none" type="submit">Login <i class="fa-solid fa-right-to-bracket fa-sm"></i></button>
 
-        <span style="color:red;">@TempData["Message"]</span>
+        @*<a asp-controller="Fingerprint" asp-action="index"><img src="~/images/fingerprint-scan.png" style="width:10%; height:10%; padding-top:15%" /></a>*@
+
+        <span style="position:absolute; color:red; top:60%; left: 50%; transform: translateX(-50%);"><b>@TempData["Message"]</b></span>
     </form>
+
+    <form asp-controller="Home" asp-action="Login" method="post">
+        @if (@Model != null)
+        {
+            <input asp-for="UserId" class=" form-control" value=@Model.UserId readonly hidden>
+        }
+        <button type="submit" style="padding-top:10%; border-style:none"><img src="~/images/fingerprint-scan.png" style="width:10%; height:10%; padding-top:15%" /></button>
+    </form>
+
+    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="StartRegistration" style="opacity:0">Register</a>
 </div>
 
-<a asp-controller="Fingerprint" asp-action="Index">Fingerprint</a>
+
+
+@*<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Secure">Login</a>*@
+
+@*<form asp-controller="Home" asp-action="Login" method="post">
+        @if (@Model != null)
+        {
+            <input asp-for="UserId" class=" form-control" value=@Model.UserId readonly>
+        };
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>*@
 
 <script>
     function moveToNext(input) {

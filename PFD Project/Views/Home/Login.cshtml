@@ -54,12 +54,19 @@
 
             // post to login callback endpoint and redirect to homepage
             $.ajax({
-                url: '/Fingerprint/CompleteLogin',
+                url: '/Home/CompleteLogin',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(encodedResult),
                 success: function () {
-                    window.location.href = "/Home/Home";
+                    if (this)
+                    {
+                        window.location.href = "/Home/Home";
+                    }
+                    else {
+                        SessionStorage.set;
+                    }
+                    
                 }
             });
         })

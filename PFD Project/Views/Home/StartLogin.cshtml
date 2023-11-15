@@ -1,10 +1,10 @@
 ﻿@model PFD_Project.Models.LoginModel
 
 <h2>Login</h2>
-<form asp-action="Login">
+<form asp-controler="Home" asp-action="Login">
     <div class="form-group">
         <label asp-for="UserId"></label>
-        <input asp-for="UserId" class="form-control" />
+        <input asp-for="UserId" class=" form-control" value=@Model.UserId readonly>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
