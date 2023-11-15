@@ -6,19 +6,8 @@
     <p class="rTitle" id="pin">Sign in with PIN!</p>
     <p class="rSub" id="keyPin">Please key in your pin with the keypad:</p>
 
-    <!--
-    <div class="pin-input">
-        <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" id="firstDigit" />
-        <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" />
-        <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" />
-        <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" />
-        <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" />
-        <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" id="lastDigit" onkeydown="checkEnter(event)" />
-    </div>
-    -->
-
     <form asp-action="Pin" method="post">
-        <div class="form-group row">
+        @* <div class="form-group row">
             <label class="col-md-3 col-form-label" for="pin"><b>Login ID:</b></label>
             <div class="col-md-9">
                 <input type="number" class="form-control" name="pin" placeholder="Enter your Login ID" required>
@@ -27,7 +16,16 @@
 
         <div class="form-group">
             <button class="btn btn-primary" type="submit">Login <i class="fa-solid fa-right-to-bracket fa-sm"></i></button>
+        </div> *@
+        <div class="pin-input">
+            <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" id="firstDigit" name="pin1"/>
+            <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" name="pin2" />
+            <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" name="pin3" />
+            <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" name="pin4" />
+            <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" name="pin5" />
+            <input type="password" class="pin-digit" maxlength="1" oninput="moveToNext(this)" id="lastDigit" name="pin6"/>
         </div>
+        <button class="btn btn-primary" type="submit">Login <i class="fa-solid fa-right-to-bracket fa-sm"></i></button>
 
         <span style="color:red;">@TempData["Message"]</span>
     </form>
@@ -53,13 +51,6 @@
         }
     }
 
-    function checkEnter(event) {
-        if (event.key === 'Enter') {
-            // Redirect to Home.cshtml
-            window.location.href = 'Home';
-        }
-    }
-
     window.addEventListener('DOMContentLoaded', function () {
         const firstDigitInput = document.getElementById('firstDigit');
         if (firstDigitInput) {
@@ -75,7 +66,6 @@
                 previousInput.value = '';
             }
         }
-
         // Attach the checkBackspace function to the onkeydown event of the input fields
         const pinDigits = document.querySelectorAll('.pin-digit');
         pinDigits.forEach(function (pinDigit) {

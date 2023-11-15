@@ -19,7 +19,10 @@ namespace PFD_Project.Controllers
         {
             _logger = logger;
         }
-
+        public ActionResult testSky()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             return View();
@@ -40,7 +43,8 @@ namespace PFD_Project.Controllers
         [HttpPost]
         public ActionResult Pin(IFormCollection formData)
         {
-            string pin = formData["pin"].ToString();
+            string pin = formData["pin1"] + formData["pin2"] + formData["pin3"] + formData["pin4"] + formData["pin5"] + formData["pin6"];
+            Console.WriteLine(pin);
             string username = usersContext.GetUserName(pin);
             int userID = usersContext.GetUserID(pin);
             if (username != null)
