@@ -27,6 +27,7 @@ namespace PFD_Project.Controllers
         {
             return View();
         }
+
         public ActionResult LogOut()
         {
             return RedirectToAction("Index");
