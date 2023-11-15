@@ -38,10 +38,10 @@ namespace PFD_Project.DAL
                 new Users
                 {
                     UserID = reader.GetInt32(0),
-                    Name = reader.GetString(1),
-                    Pin = reader.GetString(2),
-                    Balance = reader.GetDecimal(3),
-                    Fingerprint = (byte[])reader.GetValue(4),
+                    AccountNo = reader.GetString(1),
+                    Name = reader.GetString(2),
+                    Pin = reader.GetString(3),
+                    Balance = reader.GetDecimal(4),
                 }
                 );
             }
@@ -69,13 +69,13 @@ namespace PFD_Project.DAL
                 while (reader.Read())
                 {
                     username = reader.GetString(0);
-
                 }
             }
             reader.Close();
             conn.Close();
             return username;
         }
+
         public int GetUserID(string pin)
         {
             int userID = 0;
@@ -98,6 +98,78 @@ namespace PFD_Project.DAL
             reader.Close();
             conn.Close();
             return userID;
+        }
+
+        public string GetPin(string accountNo)
+        {
+            string pin = null;
+            //Create a SqlCommand object from connection object
+            SqlCommand cmd = conn.CreateCommand();
+            //Specify the SELECT SQL statement 
+            cmd.CommandText = @"SELECT Pin FROM Users WHERE AccountNo = @accountNo";
+            cmd.Parameters.AddWithValue("@accountNo", accountNo);
+            //Open a database connection
+            conn.Open();
+            //Execute the SELECT SQL through a DataReader
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    pin = reader.GetString(0);
+                }
+            }
+            reader.Close();
+            conn.Close();
+            return pin;
+        }
+
+        public string GetUserNameByAccountNo(string accountNo)
+        {
+            string name = null;
+            //Create a SqlCommand object from connection object
+            SqlCommand cmd = conn.CreateCommand();
+            //Specify the SELECT SQL statement 
+            cmd.CommandText = @"SELECT Name FROM Users WHERE AccountNo = @accountNo";
+            cmd.Parameters.AddWithValue("@accountNo", accountNo);
+            //Open a database connection
+            conn.Open();
+            //Execute the SELECT SQL through a DataReader
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    name = reader.GetString(0);
+                }
+            }
+            reader.Close();
+            conn.Close();
+            return name;
+        }
+
+        public int GetUserIDByAccountNo(string accountNo)
+        {
+            int UserID = 0;
+            //Create a SqlCommand object from connection object
+            SqlCommand cmd = conn.CreateCommand();
+            //Specify the SELECT SQL statement 
+            cmd.CommandText = @"SELECT UserID FROM Users WHERE AccountNo = @accountNo";
+            cmd.Parameters.AddWithValue("@accountNo", accountNo);
+            //Open a database connection
+            conn.Open();
+            //Execute the SELECT SQL through a DataReader
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    UserID = reader.GetInt32(0);
+                }
+            }
+            reader.Close();
+            conn.Close();
+            return UserID;
         }
     }
 }

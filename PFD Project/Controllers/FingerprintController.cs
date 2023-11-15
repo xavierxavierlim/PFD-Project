@@ -45,7 +45,16 @@ namespace PFD_Project.Controllers
             return Ok();
         }
 
-        public IActionResult StartLogin() => View();
+        public ActionResult StartLogin()
+        {
+            string accountNo = HttpContext.Session.GetString("AccountNo");
+            LoginModel user1 = new LoginModel();
+            if (accountNo != null)
+            {
+                user1.UserId = accountNo;
+            }
+            return View(user1);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]

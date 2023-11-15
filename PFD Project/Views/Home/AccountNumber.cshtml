@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "AccountNumber";
+}
+
+@*<form asp-action="AccountNumber" method="post">
+    <br />
+    <br />
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="accountNo"><b>Account Number:</b></label>
+        <div class="col-md-9">
+            <input type="number" class="form-control" name="accountNo" placeholder="Enter your Account Number" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Login <i class="fa-solid fa-right-to-bracket fa-sm"></i></button>
+    </div>
+</form>*@
+
+<div class="text-center container-fluid pinContainer">
+    <p class="rTitle" id="pin" style="padding-bottom:10%">Please key in your Account Number:</p>
+
+    <form asp-action="AccountNumber" method="post">
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="accountNo"><b>Account Number:</b></label>
+            <div class="col-md-9">
+                <input type="number" class="form-control" name="accountNo" placeholder="Enter your Account Number" required>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" style="display:none" type="submit">Login <i class="fa-solid fa-right-to-bracket fa-sm"></i></button>
+    </form>
+</div>

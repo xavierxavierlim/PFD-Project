@@ -4,36 +4,31 @@ using System.Diagnostics;
 using PFD_Project.DAL;
 using PFD_Project.Models;
 using System.Net.NetworkInformation;
+using Rsk.AspNetCore.Fido;
+using Rsk.AspNetCore.Fido.Dtos;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace PFD_Project.Controllers
 {
     public class HomeController : Controller
     {
+        
         private UsersDAL usersContext = new UsersDAL();
 		private TransactionsDAL transactionContext = new TransactionsDAL();
         private FeedbackDAL feedbackContext = new FeedbackDAL();
 
 		private readonly ILogger<HomeController> _logger;
+        private readonly IFidoAuthentication fido;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IFidoAuthentication fido)
         {
             _logger = logger;
+            this.fido = fido ?? throw new ArgumentNullException(nameof(fido));
         }
-        public ActionResult testSky()
-        {
-            return View();
-        }
+
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult LogOut()
-        {
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult Pin()
         {
             return View();
         }
@@ -41,6 +36,34 @@ namespace PFD_Project.Controllers
         {
             return View();
         }
+        public ActionResult LogOut()
+        {
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Pin(LoginModel? user)
+        {
+            return View(user);
+        }
+
+        public ActionResult AccountNumber()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AccountNumber(IFormCollection formData)
+        {
+            string accountNo = formData["accountNo"];
+            HttpContext.Session.SetString("AccountNo", accountNo);
+            LoginModel newUser = new LoginModel();
+            if (accountNo != null)
+            {
+                newUser.UserId = accountNo;
+            }
+            return RedirectToAction("Pin", newUser);
+        }
+
         [HttpPost]
         public ActionResult Pin(IFormCollection formData)
         {
@@ -48,7 +71,11 @@ namespace PFD_Project.Controllers
             Console.WriteLine(pin);
             string username = usersContext.GetUserName(pin);
             int userID = usersContext.GetUserID(pin);
-            if (username != null)
+
+            string accountNo = HttpContext.Session.GetString("AccountNo");
+            string accountPin = usersContext.GetPin(accountNo);
+
+            if (username != null && pin == accountPin)
             {
                 HttpContext.Session.SetString("username", username);
                 HttpContext.Session.SetInt32("userID", userID);
@@ -171,6 +198,76 @@ namespace PFD_Project.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        // Fingerprint Controller
+        public IActionResult FingerprintIndex() => View();
+
+        [Authorize]
+        public IActionResult Secure() => View("Index");
+
+        public IActionResult StartRegistration() => View();
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegistrationModel model)
+        {
+            var challenge = await fido.InitiateRegistration(model.UserId, model.DeviceName);
+
+            return View(challenge.ToBase64Dto());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CompleteRegistration([FromBody] Base64FidoRegistrationResponse registrationResponse)
+        {
+            var result = await fido.CompleteRegistration(registrationResponse.ToFidoResponse());
+
+            if (result.IsError) return BadRequest(result.ErrorDescription);
+            return Ok();
+        }
+
+        public ActionResult StartLogin()
+        {
+            string accountNo = HttpContext.Session.GetString("AccountNo");
+            LoginModel user1 = new LoginModel();
+            if (accountNo != null)
+            {
+                user1.UserId = accountNo;
+            }
+            return View(user1);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginModel model)
+        {
+            var challenge = await fido.InitiateAuthentication(model.UserId);
+
+            return View(challenge.ToBase64Dto());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CompleteLogin([FromBody] Base64FidoAuthenticationResponse authenticationResponse)
+        {
+            var result = await fido.CompleteAuthentication(authenticationResponse.ToFidoResponse());
+
+            if (result.IsSuccess)
+            {
+                await HttpContext.SignInAsync("cookie", new ClaimsPrincipal(new ClaimsIdentity(new List<Claim>
+                {
+                    new Claim("sub", result.UserId)
+                }, "cookie")));
+
+                string accountNo = HttpContext.Session.GetString("AccountNo");
+                string name = usersContext.GetUserNameByAccountNo(accountNo);
+                int userID = usersContext.GetUserIDByAccountNo(accountNo);
+
+                HttpContext.Session.SetString("username", name);
+                HttpContext.Session.SetInt32("userID", userID);
+            }
+
+            if (result.IsError) return BadRequest(result.ErrorDescription);
+            return Ok();
         }
     }
 }
