@@ -15,9 +15,6 @@ const closeCam = () => {
     }
     video.srcObject = null;
 
-    const icon = document.getElementsByClassName("fa-camera");
-    icon.style.color = '#000000';
-
     sessionStorage.setItem("useCam", false);
     cam = (sessionStorage.getItem("useCam") === 'true');
 

@@ -130,34 +130,73 @@ body {
     display: block;
     margin-left: 12px;
 }
+.background {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 55%;
+    background-color: rgb(240, 240, 240);
+    box-shadow: 0 0 10px 5px rgb(0, 0, 0, 0.60);
+}
+.left, .right {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+}
 .cardGrid {
-    border: 2px solid black;
+
     margin-top: 30px;
     height: 350px;
     max-width: 550px;
 }
-.cardContent {
+.cardContentLeft {
     position: relative;
     top: 5%;
     left: 5%;
 }
+.cardContentRight {
+    position: relative;
+    top: 5%;
+    right: 5%;
+}
 .amountCard {
-    display: inline-block;
+    
     text-align: center;
     border-radius: 15px;
-    background: #da291c;
-    padding-top: 18px;
+    border: 0px solid darkslategrey;
+    background: linear-gradient(90deg, #da291c, rgb(96, 0, 0));
+/*    padding-top: 18px;
     padding-bottom: 18px;
     padding-left: 9px;
-    padding-right: 9px;
-    height: 80px;
-    width: 120px;
+    padding-right: 9px;*/
+    height: 100px;
+    width: 160px;
 }
-.amountCard a {
-    color: lightgray;
-    display:inline-block;
-    width:100%;
-    height:100%;
+.amountCard input {
+    color: whitesmoke;
+    background: none;
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+.noncashContent {
+    display: block;
+    height: 200px;
+    width: 140px;
+    margin-right: 40px;
+    position: relative;
+    left: 50px;
+    border: 2px solid darkslategray;
+    border-radius: 8px;
+    /*transform: translate(0, 0);*/
+}
+.noncashContent:hover {
+    background: rgba(0, 0, 0, 0.12);
+    transition-duration: 0.15s;
 }
 @keyframes introAnimation {
     0% {

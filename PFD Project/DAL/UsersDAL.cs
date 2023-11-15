@@ -76,7 +76,6 @@ namespace PFD_Project.DAL
             conn.Close();
             return username;
         }
-
         public int GetUserID(string pin)
         {
             int userID = 0;

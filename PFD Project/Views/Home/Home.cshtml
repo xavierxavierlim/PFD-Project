@@ -1,4 +1,6 @@
-﻿@{
+﻿@model PFD_Project.Models.Transactions
+
+@{
     ViewData["Title"] = "Home";
 }
 
@@ -8,39 +10,44 @@
     <br />
     <br />
 </div> *@
-
+<div class="background"></div>
 <div class="homeContainer row">
+    
     <div class="left col-6">
         <div class="intLeft">
             <span class="rSub functionTitle">Get Cash</span>
             <div class="cardGrid">
-                <div class="cardContent">
-                    <div class="row">
-                        <div class="col-2 m-1 amountCard">
-                            <a class="rTitle text-decoration-none" asp-controller="Home" asp-action="WithdrawMessage">$50</a>
+                <div class="cardContentLeft">
+                    <form asp-controller="Home" asp-action="Home" method="post">
+                        <div class="row">
+                            <div class="col-2 m-1 amountCard">
+                                <input type="submit" class="rTitle text-decoration-none" value="$50" asp-route-amount=50>
+                            </div>
+                            <div class="col-2 m-1 amountCard">
+                                <input type="submit" class="rTitle text-decoration-none" value="$80" asp-route-amount=80>
+                            </div>
                         </div>
-                        <div class="col-2 m-1 amountCard">
-                            <a class="rTitle text-decoration-none" asp-controller="Home" asp-action="WithdrawMessage">$80</a>
+                        <div class="row">
+                            <div class="col-2 m-1 amountCard">
+                                <input type="submit" class="rTitle text-decoration-none" value="$100" asp-route-amount=100>
+                            </div>
+                            <div class="col-2 m-1 amountCard">
+                                <input type="submit" class="rTitle text-decoration-none" value="$500" asp-route-amount=500>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2 m-1 amountCard">
-                            <a class="rTitle text-decoration-none" asp-controller="Home" asp-action="WithdrawMessage">$100</a>
+                    </form>
+                    <form asp-controller="Home" asp-action="Home" method="post">
+                        <div class="row">
+                            <div class="col-6 my-1" style="padding: 5px; width: 100%">
+                                <div class="input-group" style="">
+                                    <input type="text" id="enterAmountPlaceholder" name="amount" class="form-control rCon" placeholder="Other amount" required>
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-primary d-inline-block" id="submitButton" style="border: none; outline: none; background: transparent;" disabled><i class="fa-solid fa-arrow-right fa-2xl" style="color:#000000"></i></button>
+									</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-2 m-1 amountCard">
-                            <a class="rTitle text-decoration-none" asp-controller="Home" asp-action="WithdrawMessage">$500</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 d-inline">
-                        <form asp-controller="Home" asp-action="" method="post">
-                        <input type="text" id="enterAmountPlaceholder" name="amount" class="form-control rCon" style="width: 65%;" placeholder="Other amount" required>
-                        <button type="submit" class="btn btn-primary" id="submitButton" disabled>
-                            Submit
-                        </button>
-                        </form>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -49,42 +56,22 @@
         <div class="intRight">
             <span class="rSub functionTitle">Non-Cash Services</span>
             <div class="cardGrid">
+                <div class="cardContentRight">
+					<div class="row">
+						<button class="noncashContent rTitle" asp-controller="Home" asp-action="">
+                            Activate Card
+                        </button>
+                        <button class="noncashContent rTitle" asp-controller="Home" asp-action="BalanceEnquiry">
+                            Balance Enquiry
+                        </button>
+                        @* <a style="display:flex;">
+                            <i class="fa-solid fa-chevron-right fa-2xl"></i>
+                        </a> *@
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-        @* <div class="col-md-3">
-            <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
-                <div style="font-size: 30px;" class="rTitle" id="getCash"><b>Get Cash</b></div>
-                <div class="card border-dark" style="width: 180px; height: 250px;">
-                    <div class="card-body" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
-                        <a class="rTitle" id="withdrawCash" asp-controller="Home" asp-action="WithdrawAmount" style="font-size: 30px; text-decoration: none">Withdraw Cash</a>
-                    </div>
-                </div>
-            </div>
-        </div> *@
-
-        @* <div class="col-md-1">
-            <div style="border-left: 2px solid black; height: 100%;"></div>
-        </div> *@
-
-        @* <div class="col-md-5">
-            <div>
-                <p class="rTitle" id="nonCashService" style="text-align: center; padding-bottom: 20px; font-size: 30px;"><b>Non Cash Services</b></p>
-            </div>
-            <div style="display: flex; justify-content: center; gap: 65px;">
-                <div class="card border-dark" style="width: 170px; height: 250px;">
-                    <div class="card-body" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
-                        <a class="rTitle" id="activateCard" asp-controller="Home" asp-action="" style="font-size: 30px; text-decoration: none">Activate Card</a>
-                    </div>
-                </div>
-
-                <div class="card border-dark" style="width: 170px; height: 250px;">
-                    <div class="card-body" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
-                        <a class="rTitle" id="balanceEnquiry" asp-controller="Home" asp-action="" style="font-size: 30px; text-decoration: none">Balance Enquiry</a>
-                    </div>
-                </div>
-            </div>
-        </div> *@
 </div>
 <script>
     document.getElementById('enterAmountPlaceholder').addEventListener('input', function () {
