@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/streamCam.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/css/resizeScreen.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/skyBio.css" asp-append-version="true" />
+    <script src="~/js/tracking-min.js"></script>
+    <script src="~/js/face-min.js"></script>
     <script src="~/js/main.js" defer></script>
     <script src="~/js/site.js" defer></script>
     <script src="~/js/resizeScreen.js" defer></script>
@@ -50,12 +51,18 @@
     </header>
     <div class="container">
 
+@*         <div id="dragCamCon">
+            <div id="camContainer">
+                <video id="streamCam" preload autoplay loop muted></video>
+            </div>
+        </div> *@
+
         <div id="dragCamCon">
             <div id="camContainer">
-                <video id="streamCam" autoplay></video>
+                <video id="video" width="320" height="240" preload autoplay loop muted></video>
+                <canvas id="canvas" width="320" height="240"></canvas>
             </div>
         </div>
-
         <main role="main" class="pb-3">
             
             <div class="container-fluid justify-content-center" id="resizePopUp">
@@ -77,6 +84,7 @@
             </div>
 
             @RenderBody()
+
         </main>
     </div>
 
@@ -90,5 +98,3 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-
-
