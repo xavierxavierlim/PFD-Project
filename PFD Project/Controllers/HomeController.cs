@@ -19,7 +19,7 @@ namespace PFD_Project.Controllers
         {
             _logger = logger;
         }
-        public ActionResult testSky()
+        public ActionResult tesst()
         {
             return View();
         }

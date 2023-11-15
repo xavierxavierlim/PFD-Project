@@ -7,17 +7,25 @@
     z-index: 10;
     height: 220px;
     width: 220px;
-    display: none;
-    /*user-select: none;*/
+    display: block;
     cursor: move;
     shape-outside: circle();
     clip-path: circle();
 }
-#streamCam {
-    height: 100%;
-    width: 100%;
-    /*Mirror code starts*/
-    transform: scale(1.2) rotateY(180deg);
-    -webkit-transform: scale(1.4) rotateY(180deg); /* Safari and Chrome */
-    -moz-transform: scale(1.4) rotateY(180deg); /* Firefox */
+
+#video, #canvas {
+    position: absolute;
+    z-index: 11;
+/*    border: 5px solid red;*/
+}
+#video {
+    transform: scale(1) rotateY(180deg) translate(20%, -5%);
+    -webkit-transform: scale(1) rotateY(180deg) translate(20%, -5%);
+    -moz-transform: scale(1) rotateY(180deg) translate(20%, -5%);
+}
+#canvas {
+    display: none;
+    transform: scale(0.7) rotateY(180deg) translate(20%, -5%);
+    -webkit-transform: scale(0.7) rotateY(180deg) translate(20%, -5%);
+    -moz-transform: scale(0.7) rotateY(180deg) translate(20%, -5%);
 }
