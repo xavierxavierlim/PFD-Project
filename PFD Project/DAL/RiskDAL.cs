@@ -4,6 +4,8 @@ using PFD_Project.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Transactions;
+using System.Data.Common;
 namespace PFD_Project.DAL
 {
     public class RiskDAL
@@ -23,9 +25,19 @@ namespace PFD_Project.DAL
             //Connection String read.
             conn = new SqlConnection(strConn);
         }
-        public int addRisk()
+        public void addRisk(int id)
         {
-            return 0;
+            string currentdatetime = DateTime.Now.Year + "." + DateTime.Now.Month + "." + DateTime.Now.Day +
+               " " + DateTime.Now.Hour + (":") + DateTime.Now.Minute + (":") + DateTime.Now.Second;
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = @"INSERT INTO Risks (RiskType, ReportedDateTime, UserID) OUTPUT INSERTED.RiskID VALUES(@rt, @dt, @uid)";
+            cmd.Parameters.AddWithValue("@rt", "Possible Shoulder Surfing");
+            cmd.Parameters.AddWithValue("@dt", currentdatetime);
+            cmd.Parameters.AddWithValue("@uid", Convert.ToString(id));
+            conn.Open();
+
+            cmd.ExecuteScalar();
+            conn.Close();
         }
     }
 }

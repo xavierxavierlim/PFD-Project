@@ -329,7 +329,7 @@ namespace PFD_Project.Controllers
         }
         public void CallNotification()
         {
-            if (HttpContext.Session.GetInt32("riskFlag") >= 3)
+            if (HttpContext.Session.GetInt32("riskFlag") >= 3 && HttpContext.Session.GetInt32("userID") != null)
             {
                 string accountNo = HttpContext.Session.GetString("AccountNo");
                 string name = usersContext.GetUserNameByAccountNo(accountNo) ?? "JIADONG";
@@ -345,7 +345,7 @@ namespace PFD_Project.Controllers
                 );
 
                 Console.WriteLine(message.Sid);
-                riskContext.addRisk();
+                riskContext.addRisk(Convert.ToInt32(HttpContext.Session.GetInt32("userID")));
             }
         }
         [HttpPost]

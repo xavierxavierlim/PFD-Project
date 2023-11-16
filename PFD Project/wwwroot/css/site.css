@@ -165,7 +165,13 @@ body {
     text-decoration: none;
     color: black;
 }
-
+.card {
+    width: 260px;
+    border-radius: 14px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
 .feedback-container {
     display:grid;
     grid-template-columns: 25% 25% 25% 25%;
