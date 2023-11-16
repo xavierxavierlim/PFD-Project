@@ -125,7 +125,7 @@ body {
     position: relative;
     animation: hoverAnimation 10s infinite;
 }
-.pinContainer, .homeContainer {
+.pinContainer, .homeContainer, .loginContainer {
     margin-top: 110px;
 }
 .pin-input {

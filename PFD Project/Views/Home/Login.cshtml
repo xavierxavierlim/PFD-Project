@@ -1,8 +1,8 @@
 ﻿@using Newtonsoft.Json
 @model Rsk.AspNetCore.Fido.Dtos.Base64FidoAuthenticationChallenge
-
-<h2>Please use your authenticator</h2>
-
+<div class="loginContainer "style="text-align: center">
+    <p class="rTitle">Please use your authenticator</p>
+</div>
 <script>
     // Challenge
     let challengeBytesAsString = atob("@Html.Raw(Model.Base64Challenge)");
