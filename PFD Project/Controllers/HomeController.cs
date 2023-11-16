@@ -107,7 +107,7 @@ namespace PFD_Project.Controllers
             ViewData["Name"] = name;
             Transactions newTrans = new Transactions();
             decimal balance = usersContext.GetBalanceByAccountNo(HttpContext.Session.GetString("AccountNo"));
-            string balanceString = balance.ToString();
+            string balanceString = balance.ToString("########.00");
             HttpContext.Session.SetString("HomeBalance", balanceString);
             return View(newTrans);
         }
