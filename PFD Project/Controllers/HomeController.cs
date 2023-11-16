@@ -128,7 +128,7 @@ namespace PFD_Project.Controllers
                 string amountString = amount.ToString();
                 HttpContext.Session.SetString("AmountString", amountString);
 
-                string balanceString = balance.ToString("##########");
+                string balanceString = balance.ToString("##########.00");
                 HttpContext.Session.SetString("BalanceString", balanceString);
 
                 CallNotification();
