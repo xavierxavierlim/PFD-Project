@@ -1,11 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Show Balance";
 }
+<head>
+    <meta http-equiv="refresh" content="10; URL=FeedbackStars" />
+</head>
 
-<div class="container" style="text-align: center">
-    <i class="fas fa-money-bill-alt" style="font-size: 55px; color: black; text-align: center; display: block; margin-top:255px;"></i>
+<div class="container" style="text-align:center; top:30%; position:absolute">
+    <i class="fas fa-money-bill-alt" style="font-size: 55px; color: black; text-align: center; display: block;"></i>
 	<p class="text" style="font-size:34px; margin-top: 20px;">Don't forget to collect your cash</p>
-    <span class="placeholder" style="color: black; background: transparent; font-size:24px; margin-top:10px;">Account No: 123-456789-0</span>
+    <span class="placeholder" style="color: black; background: transparent; font-size:24px; margin-top:10px;">Account No: @ViewData["AccountNo"]</span>
     <br />
-    <span class="placeholder" style="color: black; background: transparent; font-size:24px; margin-top:10px;">Account Balance: $24,510.00</span>
+    <span class="placeholder" style="color: black; background: transparent; font-size:24px; margin-top:10px;">Account Balance: $@ViewData["Balance"]</span>
+    <br />
+    <span class="placeholder" style="color: black; background: transparent; font-size:24px; margin-top:10px;">Transaction Date: @ViewData["TransactionDate"]</span>
 </div>

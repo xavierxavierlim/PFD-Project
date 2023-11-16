@@ -37,10 +37,8 @@ namespace PFD_Project.Controllers
         {
             return View();
         }
-        public ActionResult BalanceEnquiry()
-        {
-            return View();
-        }
+        public ActionResult BalanceEnquiry() => View();
+
         public ActionResult LogOut()
         {
             return RedirectToAction("Index");
@@ -128,8 +126,11 @@ namespace PFD_Project.Controllers
                 string amountString = amount.ToString();
                 HttpContext.Session.SetString("AmountString", amountString);
 
-                string balanceString = balance.ToString("##########");
+                string balanceString = balance.ToString("##########.00");
                 HttpContext.Session.SetString("BalanceString", balanceString);
+
+                string transactionDate = newTrans.TransactionDate.ToString();
+                HttpContext.Session.SetString("TransactionDate", transactionDate);
 
                 CallNotification();
                 return RedirectToAction("WithdrawMessage");
@@ -238,6 +239,7 @@ namespace PFD_Project.Controllers
         {
             ViewData["AccountNo"] = HttpContext.Session.GetString("AccountNo");
             ViewData["Balance"] = HttpContext.Session.GetString("BalanceString");
+            ViewData["TransactionDate"] = HttpContext.Session.GetString("TransactionDate");
             return View();
         }
 
