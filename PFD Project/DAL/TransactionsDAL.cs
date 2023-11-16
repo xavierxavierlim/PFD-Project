@@ -41,5 +41,38 @@ namespace PFD_Project.DAL
 			conn.Close();
 			return transaction.TransactionID;
 		}
-	}
+
+        public List<Transactions> GetAllTransactionsByUserID(int userID)
+        {
+            //Create a SqlCommand object from connection object
+            SqlCommand cmd = conn.CreateCommand();
+            //Specify the SELECT SQL statement 
+            cmd.CommandText = @"SELECT * FROM Transactions WHERE UserID = @userID";
+            cmd.Parameters.AddWithValue("@userID", userID);
+            //Open a database connection
+            conn.Open();
+            //Execute the SELECT SQL through a DataReader
+            SqlDataReader reader = cmd.ExecuteReader();
+            //Read all records until the end, save data into a staff list
+            List<Transactions> transactionsList = new List<Transactions>();
+            while (reader.Read())
+            {
+                transactionsList.Add(
+                new Transactions
+                {
+                    TransactionID = reader.GetInt32(0),
+					UserID = reader.GetInt32(1),
+					TransactionType = reader.GetString(2),
+					Amount = reader.GetDecimal(3),
+					TransactionDate = reader.GetDateTime(4)
+                }
+                );
+            }
+            //Close DataReader
+            reader.Close();
+            //Close the database connection
+            conn.Close();
+            return transactionsList;
+        }
+    }
 }

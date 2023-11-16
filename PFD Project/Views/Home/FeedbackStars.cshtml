@@ -6,20 +6,12 @@
     <p class="rTitle" id="rateExperience" style="white-space: nowrap">How would you rate your experience today?</p>
 
     <div class="star-rating">
-        <!--
-        <a asp-controller="Home" asp-action="FeedbackOptions" class="star">&#9733;</a>
-        <a asp-controller="Home" asp-action="FeedbackOptions" class="star">&#9733;</a>
-        <a asp-controller="Home" asp-action="FeedbackOptions" class="star">&#9733;</a>
-        <a asp-controller="Home" asp-action="Thanks" class="star">&#9733;</a>
-        <a asp-controller="Home" asp-action="Thanks" class="star">&#9733;</a>
-        -->
-
         <form asp-controller="Home" asp-action="FeedbackStars" method="post">
-            <input type="submit" class="star" value=&#9733; asp-route-star=1>
-            <input type="submit" class="star" value=&#9733; asp-route-star=2>
-            <input type="submit" class="star" value=&#9733; asp-route-star=3>
-            <input type="submit" class="star" value=&#9733; asp-route-star=4>
-            <input type="submit" class="star" value=&#9733; asp-route-star=5>
+            <input type="submit" style="border:none; background:none" class="star" value=&#9733; asp-route-star=1>
+            <input type="submit" style="border:none; background:none" class="star" value=&#9733; asp-route-star=2>
+            <input type="submit" style="border:none; background:none" class="star" value=&#9733; asp-route-star=3>
+            <input type="submit" style="border:none; background:none" class="star" value=&#9733; asp-route-star=4>
+            <input type="submit" style="border:none; background:none" class="star" value=&#9733; asp-route-star=5>
         </form>
     </div>
 </div>

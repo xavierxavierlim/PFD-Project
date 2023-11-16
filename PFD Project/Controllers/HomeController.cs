@@ -39,8 +39,12 @@ namespace PFD_Project.Controllers
         }
         public ActionResult BalanceEnquiry()
         {
-            return View();
+            ViewData["HomeBalance"] = HttpContext.Session.GetString("HomeBalance");
+            int userID = Convert.ToInt32(HttpContext.Session.GetInt32("userID"));
+            List<Transactions> transactionList = transactionContext.GetAllTransactionsByUserID(userID);
+            return View(transactionList);
         }
+
         public ActionResult LogOut()
         {
             HttpContext.Session.Clear();
@@ -80,6 +84,10 @@ namespace PFD_Project.Controllers
 
             string accountNo = HttpContext.Session.GetString("AccountNo");
             string accountPin = usersContext.GetPin(accountNo);
+            //decimal balance = usersContext.GetBalanceByAccountNo(accountNo);
+            //string balanceString = balance.ToString();
+
+            //HttpContext.Session.SetString("Balance", balanceString);
 
             if (username != null && pin == accountPin)
             {
@@ -99,6 +107,9 @@ namespace PFD_Project.Controllers
             string name = HttpContext.Session.GetString("username");
             ViewData["Name"] = name;
             Transactions newTrans = new Transactions();
+            decimal balance = usersContext.GetBalanceByAccountNo(HttpContext.Session.GetString("AccountNo"));
+            string balanceString = balance.ToString("########.00");
+            HttpContext.Session.SetString("HomeBalance", balanceString);
             return View(newTrans);
         }
 
@@ -113,6 +124,23 @@ namespace PFD_Project.Controllers
                 newTrans.Amount = amount;
                 newTrans.TransactionType = "Withdraw";
                 newTrans.TransactionID = transactionContext.addTransaction(newTrans);
+
+                //string stringBalance = HttpContext.Session.GetString("Balance");
+                //decimal balance = Convert.ToDecimal(stringBalance);
+                
+                Users user = usersContext.GetUsersByUserID(newTrans.UserID);
+                user.Balance -= amount;
+                decimal balance = user.Balance;
+                usersContext.UpdateBalance(balance, newTrans.UserID);
+
+                string amountString = amount.ToString();
+                HttpContext.Session.SetString("AmountString", amountString);
+
+                string balanceString = balance.ToString("##########.00");
+                HttpContext.Session.SetString("BalanceString", balanceString);
+
+                string transactionDate = newTrans.TransactionDate.ToString();
+                HttpContext.Session.SetString("TransactionDate", transactionDate);
 
                 CallNotification();
                 return RedirectToAction("WithdrawMessage");
@@ -132,6 +160,7 @@ namespace PFD_Project.Controllers
 
         public IActionResult Receipt()
         {
+            ViewData["WithdrawAmount"] = HttpContext.Session.GetString("AmountString");
             return View();
         }
 
@@ -156,7 +185,16 @@ namespace PFD_Project.Controllers
                 newFeedback.UserID = Convert.ToInt32(HttpContext.Session.GetInt32("userID"));
                 newFeedback.FeedbackID = feedbackContext.addFeedbackStars(newFeedback);
                 HttpContext.Session.SetInt32("FeedbackID", newFeedback.FeedbackID);
-                return RedirectToAction("FeedbackOptions");
+
+                if (newFeedback.Rating <= 3)
+                {
+                    return RedirectToAction("FeedbackOptions");
+                }
+
+                else
+                {
+                    return RedirectToAction("Thanks");
+                }
             }
             else
             {
@@ -203,6 +241,14 @@ namespace PFD_Project.Controllers
 
         public IActionResult MoreOption()
         {
+            return View();
+        }
+
+        public IActionResult ShowBalance()
+        {
+            ViewData["AccountNo"] = HttpContext.Session.GetString("AccountNo");
+            ViewData["Balance"] = HttpContext.Session.GetString("BalanceString");
+            ViewData["TransactionDate"] = HttpContext.Session.GetString("TransactionDate");
             return View();
         }
 
@@ -315,6 +361,14 @@ namespace PFD_Project.Controllers
             {
                HttpContext.Session.SetInt32("riskFlag", 1);
             }
+        }
+
+        public ActionResult TestBalanceEnquiry()
+        {
+            ViewData["HomeBalance"] = HttpContext.Session.GetString("HomeBalance");
+            int userID = Convert.ToInt32(HttpContext.Session.GetInt32("userID"));
+            List<Transactions> transactionList = transactionContext.GetAllTransactionsByUserID(userID);
+            return View(transactionList);
         }
     }
 } 
