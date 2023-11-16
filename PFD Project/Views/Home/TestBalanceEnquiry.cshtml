@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PFD_Project.Models.Transactions>
+
+@{
+    ViewData["Title"] = "TestBalanceEnquiry";
+}
+
+<div class="text-center container-fluid" style="margin-top:120px;">
+    <p class="rTitle" id="withdrawAmountAmount">Balance: $@ViewData["HomeBalance"]</p>
+    <p class="rTitle" id="withdrawAmountAmount">Your Transaction History:</p>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TransactionType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TransactionDate)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

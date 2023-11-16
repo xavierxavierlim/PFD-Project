@@ -37,7 +37,13 @@ namespace PFD_Project.Controllers
         {
             return View();
         }
-        public ActionResult BalanceEnquiry() => View();
+        public ActionResult BalanceEnquiry()
+        {
+            ViewData["HomeBalance"] = HttpContext.Session.GetString("HomeBalance");
+            int userID = Convert.ToInt32(HttpContext.Session.GetInt32("userID"));
+            List<Transactions> transactionList = transactionContext.GetAllTransactionsByUserID(userID);
+            return View(transactionList);
+        }
 
         public ActionResult LogOut()
         {
@@ -100,6 +106,9 @@ namespace PFD_Project.Controllers
             string name = HttpContext.Session.GetString("username");
             ViewData["Name"] = name;
             Transactions newTrans = new Transactions();
+            decimal balance = usersContext.GetBalanceByAccountNo(HttpContext.Session.GetString("AccountNo"));
+            string balanceString = balance.ToString();
+            HttpContext.Session.SetString("HomeBalance", balanceString);
             return View(newTrans);
         }
 
@@ -352,6 +361,14 @@ namespace PFD_Project.Controllers
             {
                HttpContext.Session.SetInt32("riskFlag", 1);
             }
+        }
+
+        public ActionResult TestBalanceEnquiry()
+        {
+            ViewData["HomeBalance"] = HttpContext.Session.GetString("HomeBalance");
+            int userID = Convert.ToInt32(HttpContext.Session.GetInt32("userID"));
+            List<Transactions> transactionList = transactionContext.GetAllTransactionsByUserID(userID);
+            return View(transactionList);
         }
     }
 } 

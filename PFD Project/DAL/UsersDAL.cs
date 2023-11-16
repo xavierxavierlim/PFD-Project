@@ -42,6 +42,7 @@ namespace PFD_Project.DAL
                     Name = reader.GetString(2),
                     Pin = reader.GetString(3),
                     Balance = reader.GetDecimal(4),
+                    PhoneNo = reader.GetString(5)
                 }
                 );
             }
