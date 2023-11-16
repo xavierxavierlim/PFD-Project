@@ -7,15 +7,24 @@
     <div class="col-md-6" style="width: 1000px;">
         <div class="card border-bold" style="height: 550px;">
             <div class="card-body" style="display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between;">
-                <div style="width: 100%; display: flex; flex-direction: column; align-items: flex-start;">
-					<span class="placeholder" style="color: black; background: transparent; margin-left:8.5%;"><b>Your Account Summary:</b></span>
-                    <span class="placeholder" style="color: black; background: transparent; margin-left:8.5%; margin-top:30px;">Account Balance:</span>
-                    <div class="card border-bold" style="height:150px; margin-left:100px; width:150px; margin-top:10px;">
-                        <div class="card-body">
-                            <span class="placeholder" style="color:black; background:transparent; margin-left:20%; margin-top:45px; text-align:center">$@ViewData["HomeBalance"]</span>
+                <div style="width: 100%;display: flex;flex-direction: column;margin-left: 5%;">
+					<span class="placeholder" style="color: black; background: transparent;"><b>Your Account Summary:</b></span>
+                    <span class="placeholder" style="color: black; background: transparent; margin-top:30px;">Account Balance:</span>
+					<div class="card border-bold" style="height:150px; width:150px; margin-top:10px;">
+                        <div class="card-body" style="text-align:center;"> 
+                            <span class="placeholder" style=" margin-top:3rem; color:black; background:transparent;">$@ViewData["HomeBalance"]</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                        <span class="placeholder" style="color: black; background: transparent; margin-top:10px;">Outstanding Debt:</span>
+						<div class="card border-bold" style="height:150px; width:150px; margin-top:10px;">
+                            <div class="card-body" style="text-align:center;">
+                                <span class="placeholder" style=" margin-top:3rem; color:black; background:transparent;">$10.00</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+
 
                 <div style="width: 100%; display: flex; flex-direction: column; align-items: flex-start;">
 					<span class="placeholder" style="color: black; background: transparent; margin-left:0%;"><b>Your Transaction History:</b></span>
