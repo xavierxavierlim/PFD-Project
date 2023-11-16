@@ -79,10 +79,10 @@ namespace PFD_Project.Controllers
 
             string accountNo = HttpContext.Session.GetString("AccountNo");
             string accountPin = usersContext.GetPin(accountNo);
-            decimal balance = usersContext.GetBalanceByAccountNo(accountNo);
-            string balanceString = balance.ToString();
+            //decimal balance = usersContext.GetBalanceByAccountNo(accountNo);
+            //string balanceString = balance.ToString();
 
-            HttpContext.Session.SetString("Balance", balanceString);
+            //HttpContext.Session.SetString("Balance", balanceString);
 
             if (username != null && pin == accountPin)
             {
@@ -127,6 +127,9 @@ namespace PFD_Project.Controllers
 
                 string amountString = amount.ToString();
                 HttpContext.Session.SetString("AmountString", amountString);
+
+                string balanceString = balance.ToString("##########");
+                HttpContext.Session.SetString("BalanceString", balanceString);
 
                 CallNotification();
                 return RedirectToAction("WithdrawMessage");
@@ -233,6 +236,8 @@ namespace PFD_Project.Controllers
 
         public IActionResult ShowBalance()
         {
+            ViewData["AccountNo"] = HttpContext.Session.GetString("AccountNo");
+            ViewData["Balance"] = HttpContext.Session.GetString("BalanceString");
             return View();
         }
 
