@@ -79,6 +79,10 @@ namespace PFD_Project.Controllers
 
             string accountNo = HttpContext.Session.GetString("AccountNo");
             string accountPin = usersContext.GetPin(accountNo);
+            decimal balance = usersContext.GetBalanceByAccountNo(accountNo);
+            string balanceString = balance.ToString();
+
+            HttpContext.Session.SetString("Balance", balanceString);
 
             if (username != null && pin == accountPin)
             {
@@ -112,6 +116,15 @@ namespace PFD_Project.Controllers
                 newTrans.Amount = amount;
                 newTrans.TransactionType = "Withdraw";
                 newTrans.TransactionID = transactionContext.addTransaction(newTrans);
+
+                //string stringBalance = HttpContext.Session.GetString("Balance");
+                //decimal balance = Convert.ToDecimal(stringBalance);
+                
+                Users user = usersContext.GetUsersByUserID(newTrans.UserID);
+                user.Balance -= amount;
+                decimal balance = user.Balance;
+                usersContext.UpdateBalance(balance, newTrans.UserID);
+
 
                 CallNotification();
                 return RedirectToAction("WithdrawMessage");

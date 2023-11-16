@@ -10,5 +10,6 @@ namespace PFD_Project.Models
         public string Name { get; set; }
         public string Pin { get; set; }
         public decimal Balance { get; set; }
+        public string PhoneNo { get; set; }
     }
 }
