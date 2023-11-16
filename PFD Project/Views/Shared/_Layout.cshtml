@@ -18,6 +18,13 @@
     <script src="https://kit.fontawesome.com/41cc033c5e.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div id="borderLeft"></div>
+    <div id="borderRight"></div>
+    <div id="borderTop"></div>
+    <div id="borderBot"></div>
+    <div id="warningMessage">
+        <span class="rCon">Warning: Possible shoulder surfing</span>
+    </div>
 	<header style="position: absolute; z-index: 5; width: 100%;top: 0; transform: translate(0, 0);">
         <div class="row my-3 mx-2" >
             <div class="col text-left">
@@ -33,16 +40,13 @@
             <div class="col text-right">
                 <ul class="navbar-nav list-group-horizontal justify-content-end">
                     <li class="nav-item mx-1 ml-auto">
-                        <a href="#" onClick="toggleCam()" id="camIcon"><i class="fa-solid fa-camera fa-2xl" style="color: #000000; padding:20px"></i></a>
+                        <a href="#" onClick="toggleCam()" id="camIcon"><i class="fa-solid fa-eye fa-2xl" id="eyeIcon"></i></a>
                     </li>
                     <li class="nav-item mx-1 ml-auto">
-                        <a asp-area="" asp-controller="Home" asp-action=""><i class="fa-solid fa-volume-high fa-2xl" style="color: #000000; padding:20px"></i></a>
+                        <a href="#" onclick="toggleLanguage()"><i class="fa-solid fa-language fa-2xl" id="langIcon"></i></a>
                     </li>
                     <li class="nav-item mx-1 ml-auto">
-                        <a href="#" onclick="toggleLanguage()"><i class="fa-solid fa-language fa-2xl" style="color: #000000; padding: 20px"></i></a>
-                    </li>
-                    <li class="nav-item mx-1 ml-auto">
-                        <a href="#" onclick="toggleResize()"><i class="fa-solid fa-magnifying-glass fa-2xl" style="color: #000000; padding:20px"></i></a>
+                        <a href="#" onclick="toggleResize()"><i class="fa-solid fa-font fa-2xl" id="sizeIcon"></i></a>
                     </li>
                 </ul>
             </div>
@@ -50,13 +54,6 @@
         </div>
     </header>
     <div class="container">
-
-@*         <div id="dragCamCon">
-            <div id="camContainer">
-                <video id="streamCam" preload autoplay loop muted></video>
-            </div>
-        </div> *@
-
         <div id="dragCamCon">
             <div id="camContainer">
                 <video id="video" width="320" height="240" preload autoplay loop muted></video>
@@ -74,10 +71,10 @@
 					<div class="col-3 mx-3 my-5" id="defaultPreset" onclick="selectDefault(100)">
                         <span id="defaultpreset">Default</span> 
                     </div>
-					<div class="col-3 mx-3 my-5" id="p1Preset" onclick="selectp1(150)">
+					<div class="col-3 mx-3 my-5" id="p1Preset" onclick="selectp1(120)">
                         <span id="preset1">Large</span>
                     </div>
-					<div class="col-3 mx-3 my-5" id="p2Preset" onclick="selectp2(200)">
+					<div class="col-3 mx-3 my-5" id="p2Preset" onclick="selectp2(130)">
                         <span id="preset2">Largest</span>
                     </div>
                 </div>

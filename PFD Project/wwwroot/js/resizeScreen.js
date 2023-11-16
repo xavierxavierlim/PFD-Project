@@ -75,10 +75,10 @@ if (sessionStorage.getItem("Preset") == null) {
 }
 else {
     if (sessionStorage.getItem("Preset") == "1") {
-        selectp1(150);
+        selectp1(120);
     }
     else if (sessionStorage.getItem("Preset") == "2") {
-        selectp2(200);
+        selectp2(130);
     }
     else {
         selectDefault(100);

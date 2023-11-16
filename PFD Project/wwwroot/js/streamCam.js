@@ -1,5 +1,5 @@
 ﻿if (sessionStorage.getItem("useCam") == null) {
-    sessionStorage.setItem("useCam", 'true')
+    sessionStorage.setItem("useCam", 'false')
 }
 var cam = (sessionStorage.getItem("useCam") === 'true');
 var firsttimeonpage = true;
@@ -44,6 +44,29 @@ function dragElement(elmnt) {
         document.onmousemove = null;
     }
 }
+function warning() {
+    var top = document.getElementById('borderTop');
+    var bot = document.getElementById('borderBot');
+    var left = document.getElementById('borderLeft');
+    var right = document.getElementById('borderRight');
+    var message = document.getElementById('warningMessage');
+    top.style.display = 'block';
+    bot.style.display = 'block';
+    left.style.display = 'block';
+    right.style.display = 'block';
+    message.style.display = 'block';
+    message.onclick = function () {
+        message.style.display = 'none';
+    };
+    setTimeout(function () {
+        top.style.display = 'none';
+        bot.style.display = 'none';
+        left.style.display = 'none';
+        right.style.display = 'none';
+        message.style.display = 'none';
+    }, 6000);
+    $.post("/Home/RiskManagement/");
+}
 function detectface() {
     var video = document.getElementById('video');
     var canvas = document.getElementById('canvas');
@@ -75,6 +98,9 @@ function detectface() {
         }
         else if (event.data.length > 1) {
             console.log("More than one face detected");
+            if (sessionStorage.getItem("useCam") === 'true') {
+                warning();
+            }
         }
         else {
             console.log(event.data.length);
@@ -91,17 +117,19 @@ const closeCam = () => {
     displayContainer.style.display = 'none';
     sessionStorage.setItem("useCam", 'false');
     cam = (sessionStorage.getItem("useCam") === 'true');
-
+    document.getElementById('eyeIcon').style.color = '#000000';
 };
 const openCam = () => {
     const displayContainer = document.getElementById('camContainer');
     displayContainer.style.display = 'block';
+    sessionStorage.setItem("useCam", 'true');
+    cam = (sessionStorage.getItem("useCam") === 'true');
+    document.getElementById('eyeIcon').style.color = '#50C878';
+
     if (firsttimeonpage) {
         firsttimeonpage = false;
         detectface();
     }
-    sessionStorage.setItem("useCam", 'true');
-    cam = (sessionStorage.getItem("useCam") === 'true');
 }
 
 function toggleCam() {

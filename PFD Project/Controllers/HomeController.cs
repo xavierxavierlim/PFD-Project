@@ -2,24 +2,29 @@
 using PFD_Project.Models;
 using System.Diagnostics;
 using PFD_Project.DAL;
-using PFD_Project.Models;
 using System.Net.NetworkInformation;
 using Rsk.AspNetCore.Fido;
 using Rsk.AspNetCore.Fido.Dtos;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using System.Web.Helpers;
+
 
 namespace PFD_Project.Controllers
 {
     public class HomeController : Controller
     {
-        
+
         private UsersDAL usersContext = new UsersDAL();
-		private TransactionsDAL transactionContext = new TransactionsDAL();
+        private TransactionsDAL transactionContext = new TransactionsDAL();
+        private RiskDAL riskContext = new RiskDAL();
         private FeedbackDAL feedbackContext = new FeedbackDAL();
 
-		private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> _logger;
         private readonly IFidoAuthentication fido;
 
         public HomeController(ILogger<HomeController> logger, IFidoAuthentication fido)
@@ -84,7 +89,7 @@ namespace PFD_Project.Controllers
             else
             {
                 TempData["Message"] = "Invalid pin";
-                return RedirectToAction("Pin");          
+                return RedirectToAction("Pin");
             }
         }
 
@@ -107,13 +112,15 @@ namespace PFD_Project.Controllers
                 newTrans.Amount = amount;
                 newTrans.TransactionType = "Withdraw";
                 newTrans.TransactionID = transactionContext.addTransaction(newTrans);
+
+                CallNotification();
                 return RedirectToAction("WithdrawMessage");
             }
             else
             {
                 Transactions newTran = new Transactions();
 
-				return View(newTran);
+                return View(newTran);
             }
 
         }
@@ -121,7 +128,7 @@ namespace PFD_Project.Controllers
         public IActionResult Privacy()
         {
             return View();
-        }       
+        }
 
         public IActionResult Receipt()
         {
@@ -274,5 +281,40 @@ namespace PFD_Project.Controllers
             if (result.IsError) return BadRequest(result.ErrorDescription);
             return Ok();
         }
+        public void CallNotification()
+        {
+            if (HttpContext.Session.GetInt32("riskFlag") >= 3)
+            {
+                string accountNo = HttpContext.Session.GetString("AccountNo");
+                string name = usersContext.GetUserNameByAccountNo(accountNo);
+
+                string accountSid = "ACf7fcc346f1d1fc1b8355f14f206328d6";
+                string authToken = "463857484a8324cf76ab8ff60dffec0c";
+                TwilioClient.Init(accountSid, authToken);
+
+                var message = MessageResource.Create(
+                    body: name.ToUpper() + ": A transaction on " + Convert.ToString(DateTime.Now) + " was flagged as VULNERABLE." +
+                    " Contact OCBC customer service or visit a local branch at +65 6363 3333 / OCBC.com to report fraud or theft.",
+                    from: new Twilio.Types.PhoneNumber("+12056569336"),
+                    to: new Twilio.Types.PhoneNumber("+6597864174")
+                );
+
+                Console.WriteLine(message.Sid);
+            }
+        }
+        [HttpPost]
+        public void RiskManagement()
+        {
+            if (HttpContext.Session.GetInt32("riskFlag") != null)
+            {
+                int count = HttpContext.Session.GetInt32("riskFlag") ?? 1;
+                count++;
+                riskContext.addRisk();
+            }
+            else
+            {
+               HttpContext.Session.SetInt32("riskFlag", 1);
+            }
+        }
     }
-}
+} 
