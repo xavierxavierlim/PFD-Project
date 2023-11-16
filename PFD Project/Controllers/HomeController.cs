@@ -289,7 +289,7 @@ namespace PFD_Project.Controllers
                 string name = usersContext.GetUserNameByAccountNo(accountNo);
 
                 string accountSid = "ACf7fcc346f1d1fc1b8355f14f206328d6";
-                string authToken = "463857484a8324cf76ab8ff60dffec0c";
+                string authToken = "bceca3f97f7f9f939efb019b96f7d192";
                 TwilioClient.Init(accountSid, authToken);
 
                 var message = MessageResource.Create(
