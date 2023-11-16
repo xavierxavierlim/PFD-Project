@@ -125,6 +125,8 @@ namespace PFD_Project.Controllers
                 decimal balance = user.Balance;
                 usersContext.UpdateBalance(balance, newTrans.UserID);
 
+                string amountString = amount.ToString();
+                HttpContext.Session.SetString("AmountString", amountString);
 
                 CallNotification();
                 return RedirectToAction("WithdrawMessage");
@@ -145,6 +147,7 @@ namespace PFD_Project.Controllers
 
         public IActionResult Receipt()
         {
+            ViewData["WithdrawAmount"] = HttpContext.Session.GetString("AmountString");
             return View();
         }
 
@@ -169,7 +172,16 @@ namespace PFD_Project.Controllers
                 newFeedback.UserID = Convert.ToInt32(HttpContext.Session.GetInt32("userID"));
                 newFeedback.FeedbackID = feedbackContext.addFeedbackStars(newFeedback);
                 HttpContext.Session.SetInt32("FeedbackID", newFeedback.FeedbackID);
-                return RedirectToAction("FeedbackOptions");
+
+                if (newFeedback.Rating <= 3)
+                {
+                    return RedirectToAction("FeedbackOptions");
+                }
+
+                else
+                {
+                    return RedirectToAction("Thanks");
+                }
             }
             else
             {
