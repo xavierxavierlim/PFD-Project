@@ -1,10 +1,28 @@
 ﻿@{
     ViewData["Title"] = "Index";
-    Layout = null;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<!DOCTYPE html>
+<html>
 <head>
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PFD_Project</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/adminCharts.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
+    <div class="container indexC">
+        <div class="row justify-content-evenly">
+            <div class="col-4 mx-2">
+                <input type="button" value="Pie Chart" id="button3" onclick="location.href='@Url.Action("SatisfactionPieChart", "Admin")'" />
+            </div>
+            <div class="col-4 mx-2">
+                <input type="button" value="Bar Chart" id="button3" onclick="location.href='@Url.Action("FeedbackBarChart", "Admin")'" />
+            </div>
+        </div>
+    </div>
 </body>
+</html>

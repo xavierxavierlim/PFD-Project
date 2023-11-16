@@ -1,0 +1,58 @@
+﻿
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    background-color: #f5f5f5;
+    background-image: repeating-radial-gradient( circle at 0 0, transparent 0, #f5f5f5 95px ), repeating-linear-gradient( #e7e7e755, #e7e7e7 );
+    overflow: hidden;
+}
+.chartsDisplay {
+    background: none;
+    position: absolute;
+    top: -2%;
+}
+#button1, #button2 {
+    font-size: 35px;
+    color: whitesmoke;
+    position: relative;
+    top: -6%;
+    border: 1px solid black;
+    height: 280px;
+    width: 55vw;
+    transition-duration: 0.25s;
+}
+#button1 {
+    background-color: red;
+}
+#button2 {
+    background-color: green;
+}
+#button1:hover, #button2:hover {
+    background-color: darkgrey;
+}
+.indexC {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+#button3 {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    color: red;
+    background-color: whitesmoke;
+    border: 2px solid darkgray;
+    border-radius: 20px;
+    height: 100px;
+    width: 170px;
+    transition-duration: 0.25s;
+}
+#button3:hover {
+    color: whitesmoke;
+    background-color: red;
+}

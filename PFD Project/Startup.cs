@@ -17,7 +17,6 @@ namespace PFD_Project
 
             services.AddMvc();
             services.AddControllersWithViews();
-
             services.AddFido(options =>
             {
                 options.Licensee = "DEMO";

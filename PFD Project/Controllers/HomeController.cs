@@ -43,6 +43,7 @@ namespace PFD_Project.Controllers
         }
         public ActionResult LogOut()
         {
+            HttpContext.Session.Clear();
             return RedirectToAction("Index");
         }
 
@@ -119,7 +120,6 @@ namespace PFD_Project.Controllers
             else
             {
                 Transactions newTran = new Transactions();
-
                 return View(newTran);
             }
 
@@ -286,8 +286,7 @@ namespace PFD_Project.Controllers
             if (HttpContext.Session.GetInt32("riskFlag") >= 3)
             {
                 string accountNo = HttpContext.Session.GetString("AccountNo");
-                string name = usersContext.GetUserNameByAccountNo(accountNo);
-
+                string name = usersContext.GetUserNameByAccountNo(accountNo) ?? "JIADONG";
                 string accountSid = "ACf7fcc346f1d1fc1b8355f14f206328d6";
                 string authToken = "bceca3f97f7f9f939efb019b96f7d192";
                 TwilioClient.Init(accountSid, authToken);
@@ -300,6 +299,7 @@ namespace PFD_Project.Controllers
                 );
 
                 Console.WriteLine(message.Sid);
+                riskContext.addRisk();
             }
         }
         [HttpPost]
@@ -307,9 +307,9 @@ namespace PFD_Project.Controllers
         {
             if (HttpContext.Session.GetInt32("riskFlag") != null)
             {
-                int count = HttpContext.Session.GetInt32("riskFlag") ?? 1;
+                int count = Convert.ToInt32(HttpContext.Session.GetInt32("riskFlag"));
                 count++;
-                riskContext.addRisk();
+                HttpContext.Session.SetInt32("riskFlag", count);
             }
             else
             {
