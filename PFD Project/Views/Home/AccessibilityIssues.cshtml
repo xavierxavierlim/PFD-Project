@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Options</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iZkWBLJO6NDO7d+2PyqgYYx/8me5U8UsojBme/HZFQK3JSKgVI5PQm2rN" crossorigin="anonymous">
+    <style>
+        .feedback-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 0 auto;
+            margin-left: 85px;
+        }
+
+        .feedback-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 10px; /* Adjust the margin as needed */
+            padding: 10px; /* Add padding for better spacing */
+            width: 120px; /* Adjust the width */
+            height: 120px; /* Adjust the height */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="text-center container-fluid" style="margin-top: 80px;">
+        <p class="rTitle" id="area">What are the areas we can improve on?</p>
+        <p class="text" id="hearmore">We wish to hear from you more on how we can continue improving our ATM services.</p>
+        <p class="text" id="select">Please select one of the options below</p>
+
+        <form asp-controller="Home" asp-action="AccessibilityIssues" method="post">
+            <div class="feedback-container" style="margin-top: 10px;">
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Inadequate Screen Contrast">
+                    <i class="fas fa-clock fa-1.5x"></i> Inadequate Screen Contrast
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Button Contrast Issues">
+                    <i class="fas fa-clock fa-1.5x"></i> Button Contrast Issues
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Buttons Unreachable">
+                    <i class="fas fa-clock fa-1.5x"></i> Buttons Unreachable
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Screen Unreachable">
+                    <i class="fas fa-clock fa-1.5x"></i> Screen Unreachable
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Card Reader Unreachable">
+                    <i class="fas fa-clock fa-1.5x"></i> Card Reader Unreachable
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Cash Dispenser Unreachable">
+                    <i class="fas fa-clock fa-1.5x"></i> Cash Dispenser Unreachable
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Audio Issues">
+                    <i class="fas fa-clock fa-1.5x"></i> Audio Issues
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Receipt Print Contrast Issues">
+                    <i class="fas fa-clock fa-1.5x"></i> Receipt Print Contrast Issues
+                </button>
+            </div>
+        </form>
+
+</body>
+
+</html>
+
+
+
+

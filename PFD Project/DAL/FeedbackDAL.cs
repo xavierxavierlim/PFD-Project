@@ -54,6 +54,19 @@ namespace PFD_Project.DAL
             cmd.ExecuteNonQuery();
             conn.Close();
         }
+
+        public void addFeedbackSpecificDescription(int feedbackID, string specificDescription)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = @"UPDATE Feedback SET SpecificDescription = @SpecificDescription WHERE FeedbackID = @FeedbackID";
+
+            cmd.Parameters.AddWithValue("@SpecificDescription", specificDescription);
+            cmd.Parameters.AddWithValue("@FeedbackID", feedbackID);
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
     }
 }
 

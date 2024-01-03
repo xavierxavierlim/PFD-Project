@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Options</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iZkWBLJO6NDO7d+2PyqgYYx/8me5U8UsojBme/HZFQK3JSKgVI5PQm2rN" crossorigin="anonymous">
+    <style>
+        .feedback-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 0 auto;
+            margin-left: 85px;
+        }
+
+        .feedback-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 10px; /* Adjust the margin as needed */
+            padding: 10px; /* Add padding for better spacing */
+            width: 120px; /* Adjust the width */
+            height: 120px; /* Adjust the height */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="text-center container-fluid" style="margin-top: 80px;">
+        <p class="rTitle" id="area">What are the areas we can improve on?</p>
+        <p class="text" id="hearmore">We wish to hear from you more on how we can continue improving our ATM services.</p>
+        <p class="text" id="select">Please select one of the options below</p>
+
+        <form asp-controller="Home" asp-action="DisplayUninteractive" method="post">
+            <div class="feedback-container" style="margin-top: 10px;">
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Touchscreen Unresponsive">
+                    <i class="fas fa-clock fa-1.5x"></i> Touchscreen Unresponsive
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Button Lag">
+                    <i class="fas fa-clock fa-1.5x"></i> Button Lag
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Display Freezing">
+                    <i class="fas fa-clock fa-1.5x"></i> Display Freezing
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Inconsistent Graphics">
+                    <i class="fas fa-clock fa-1.5x"></i> Inconsistent Graphics
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Display Alignment Issues">
+                    <i class="fas fa-clock fa-1.5x"></i> Display Alignment Issues
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Card Reader Unresponsive">
+                    <i class="fas fa-clock fa-1.5x"></i> Card Reader Unresponsive
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Fingerprint Reader Unresponsive">
+                    <i class="fas fa-clock fa-1.5x"></i> Fingerprint Reader Unresponsive
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="System Glitch">
+                    <i class="fas fa-clock fa-1.5x"></i> System Glitch
+                </button>
+            </div>
+        </form>
+
+</body>
+
+</html>
+
+

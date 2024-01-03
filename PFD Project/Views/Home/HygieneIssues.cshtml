@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Options</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iZkWBLJO6NDO7d+2PyqgYYx/8me5U8UsojBme/HZFQK3JSKgVI5PQm2rN" crossorigin="anonymous">
+    <style>
+        .feedback-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 0 auto;
+            margin-left: 85px;
+        }
+
+        .feedback-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 10px; /* Adjust the margin as needed */
+            padding: 10px; /* Add padding for better spacing */
+            width: 120px; /* Adjust the width */
+            height: 120px; /* Adjust the height */
+        }
+    </style>
+</head>
+H
+<body>
+
+    <div class="text-center container-fluid" style="margin-top: 80px;">
+        <p class="rTitle" id="area">What are the areas we can improve on?</p>
+        <p class="text" id="hearmore">We wish to hear from you more on how we can continue improving our ATM services.</p>
+        <p class="text" id="select">Please select one of the options below</p>
+
+        <form asp-controller="Home" asp-action="HygieneIssues" method="post">
+            <div class="feedback-container" style="margin-top: 10px;">
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Dirty Keypad">
+                    <i class="fas fa-clock fa-1.5x"></i> Dirty Keypad
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Dirty Card Insertion Area">
+                    <i class="fas fa-clock fa-1.5x"></i> Dirty Card Insertion Area
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Dirty Receipt Dispensing Slot">
+                    <i class="fas fa-clock fa-1.5x"></i> Dirty Receipt Dispensing Slot
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Dirty Touchscreen">
+                    <i class="fas fa-clock fa-1.5x"></i> Dirty Touchscreen
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Dirty Surrounding Area">
+                    <i class="fas fa-clock fa-1.5x"></i> Dirty Surrounding Area
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Dirty Cash Withdrawal Tray">
+                    <i class="fas fa-clock fa-1.5x"></i> Dirty Cash Withdrawal Tray
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Lack of Cleaning Systems">
+                    <i class="fas fa-clock fa-1.5x"></i> Lack of Cleaning Systems
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Receipt Handling Concerns">
+                    <i class="fas fa-clock fa-1.5x"></i> Receipt Handling Concerns
+                </button>
+            </div>
+        </form>
+
+</body>
+
+</html>
+
+
+
+
+
+

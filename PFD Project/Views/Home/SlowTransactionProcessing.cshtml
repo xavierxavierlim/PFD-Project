@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Options</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iZkWBLJO6NDO7d+2PyqgYYx/8me5U8UsojBme/HZFQK3JSKgVI5PQm2rN" crossorigin="anonymous">
+    <style>
+        .feedback-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 0 auto;
+            margin-left: 85px;
+        }
+
+        .feedback-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 10px; /* Adjust the margin as needed */
+            padding: 10px; /* Add padding for better spacing */
+            width: 120px; /* Adjust the width */
+            height: 120px; /* Adjust the height */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="text-center container-fluid" style="margin-top: 80px;">
+        <p class="rTitle" id="area">What are the areas we can improve on?</p>
+        <p class="text" id="hearmore">We wish to hear from you more on how we can continue improving our ATM services.</p>
+        <p class="text" id="select">Please select one of the options below</p>
+
+        <form asp-controller="Home" asp-action="SlowTransactionProcessing" method="post">
+            <div class="feedback-container" style="margin-top: 10px;">
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Slow Authentication">
+                    <i class="fas fa-clock fa-1.5x"></i> Slow Authentication
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Slow Transaction Confirmation">
+                    <i class="fas fa-clock fa-1.5x"></i> Slow Transaction Confirmation
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Slow Cash Dispensing">
+                    <i class="fas fa-clock fa-1.5x"></i> Slow Cash Dispensing
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Slow Error Handling">
+                    <i class="fas fa-clock fa-1.5x"></i> Slow Error Handling
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Connectivity Issues">
+                    <i class="fas fa-clock fa-1.5x"></i> Connectivity Issues
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Slow Transaction Initialisation">
+                    <i class="fas fa-clock fa-1.5x"></i> Slow Transaction Initialisation
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Slow Transition Between Pages">
+                    <i class="fas fa-clock fa-1.5x"></i> Slow Transition Between Pages
+                </button>
+
+                <button id="slowTransactionProcessing" class="rCon feedback-option" asp-route-description="Slow Loading Time">
+                    <i class="fas fa-clock fa-1.5x"></i> Slow Loading Time
+                </button>
+            </div>
+        </form>
+
+</body>
+
+</html>

@@ -211,16 +211,232 @@ namespace PFD_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult FeedbackOptions(string description, Feedback newFeedback)
+        public ActionResult FeedbackOptions(string description)
         {
             if (ModelState.IsValid)
             {
-                feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                if (description == "Slow Transaction Processing")
+                {
+                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                    return RedirectToAction("SlowTransactionProcessing");
+                }
+
+                else if (description == "Difficulty Using ATM")
+                {
+                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                    return RedirectToAction("DifficultyUsingATM");
+                }
+
+                else if (description == "Display Uninteractive")
+                {
+                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                    return RedirectToAction("DisplayUninteractive");
+                }
+
+                else if (description == "Lighting Issues")
+                {
+                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                    return RedirectToAction("LightingIssues");
+                }
+
+                else if (description == "Transaction Errors")
+                {
+                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                    return RedirectToAction("TransactionErrors");
+                }
+
+                else if (description == "Accessibility Issues")
+                {
+                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                    return RedirectToAction("AccessibilityIssues");
+                }
+
+                else if (description == "Security Issues")
+                {
+                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                    return RedirectToAction("SecurityIssues");
+                }
+
+                else if (description == "Hygiene Issues")
+                {
+                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                    return RedirectToAction("HygieneIssues");
+                }
+
                 return RedirectToAction("Thanks");
             }
+            
             else
             {
                 return RedirectToAction("FeedbackOptions");
+            }
+        }
+
+        public IActionResult SlowTransactionProcessing()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SlowTransactionProcessing(string description)
+        {
+            if (ModelState.IsValid)
+            {
+               feedbackContext.addFeedbackSpecificDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+               return RedirectToAction("Thanks");
+            }
+
+            else
+            {
+                return RedirectToAction("SlowTransactionProcessing");
+            }
+        }
+
+        public IActionResult DifficultyUsingATM()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DifficultyUsingATM(string description)
+        {
+            if (ModelState.IsValid)
+            {
+                feedbackContext.addFeedbackSpecificDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                return RedirectToAction("Thanks");
+            }
+
+            else
+            {
+                return RedirectToAction("DifficultyUsingATM");
+            }
+        }
+
+        public IActionResult DisplayUninteractive()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DisplayUninteractive(string description)
+        {
+            if (ModelState.IsValid)
+            {
+                feedbackContext.addFeedbackSpecificDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                return RedirectToAction("Thanks");
+            }
+
+            else
+            {
+                return RedirectToAction("DisplayUninteractive");
+            }
+        }
+
+        public IActionResult LightingIssues()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LightingIssues(string description)
+        {
+            if (ModelState.IsValid)
+            {
+                feedbackContext.addFeedbackSpecificDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                return RedirectToAction("Thanks");
+            }
+
+            else
+            {
+                return RedirectToAction("LightingIssues");
+            }
+        }
+
+        public IActionResult TransactionErrors()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TransactionErrors(string description)
+        {
+            if (ModelState.IsValid)
+            {
+                feedbackContext.addFeedbackSpecificDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                return RedirectToAction("Thanks");
+            }
+
+            else
+            {
+                return RedirectToAction("TransactionErrors");
+            }
+        }
+
+        public IActionResult AccessibilityIssues()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AccessibilityIssues(string description)
+        {
+            if (ModelState.IsValid)
+            {
+                feedbackContext.addFeedbackSpecificDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                return RedirectToAction("Thanks");
+            }
+
+            else
+            {
+                return RedirectToAction("AccessibilityIssues");
+            }
+        }
+
+        public IActionResult SecurityIssues()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SecurityIssues(string description)
+        {
+            if (ModelState.IsValid)
+            {
+                feedbackContext.addFeedbackSpecificDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                return RedirectToAction("Thanks");
+            }
+
+            else
+            {
+                return RedirectToAction("AccessibilityIssues");
+            }
+        }
+
+        public IActionResult HygieneIssues()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult HygieneIssues(string description)
+        {
+            if (ModelState.IsValid)
+            {
+                feedbackContext.addFeedbackSpecificDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+                return RedirectToAction("Thanks");
+            }
+
+            else
+            {
+                return RedirectToAction("AccessibilityIssues");
             }
         }
 
