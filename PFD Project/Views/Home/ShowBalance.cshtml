@@ -1,4 +1,4 @@
-﻿@{
+﻿@*@{
     ViewData["Title"] = "Show Balance";
 }
 <head>
@@ -8,9 +8,63 @@
 <div class="container" style="text-align:center; top:30%; position:absolute">
     <i class="fas fa-money-bill-alt" style="font-size: 55px; color: black; text-align: center; display: block;"></i>
 	<p class="text" style="font-size:34px; margin-top: 20px;">Don't forget to collect your cash</p>
-    <span class="placeholder" style="color: black; background: transparent; font-size:24px; margin-top:10px;">Account No: @ViewData["AccountNo"]</span>
+    <span class="placeholder" style="color: black; background: transparent; font-size:24px; margin-top:10px;">Account No: @ViewData["AccountNo"] <i class="fa-solid fa-eye"></i></span>
     <br />
     <span class="placeholder" style="color: black; background: transparent; font-size:24px; margin-top:10px;">Account Balance: $@ViewData["Balance"]</span>
     <br />
+    <span class="placeholder" style="color: black; background: transparent; font-size:24px; margin-top:10px;">Transaction Date: @ViewData["TransactionDate"]</span>
+</div>*@
+
+@{
+    ViewData["Title"] = "Show Balance";
+}
+
+<head>
+    <meta http-equiv="refresh" content="10; URL=FeedbackStars" />
+    <script>
+        function toggleAccountNo() {
+            var accountNoSpan = document.getElementById("accountNo");
+            var icon = document.getElementById("eyeIconAccountNo");
+
+            if (accountNoSpan.innerHTML === 'Account No: *') {
+                accountNoSpan.innerHTML = 'Account No: @ViewData["AccountNo"]';
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                accountNoSpan.innerHTML = 'Account No: *';
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+
+        function toggleAccountBalance() {
+            var accountBalanceSpan = document.getElementById("accountBalance");
+            var icon = document.getElementById("eyeIconAccountBalance");
+
+            if (accountBalanceSpan.innerHTML === 'Account Balance: $*') {
+                accountBalanceSpan.innerHTML = 'Account Balance: $@ViewData["Balance"]';
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                accountBalanceSpan.innerHTML = 'Account Balance: $*';
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+    </script>
+</head>
+
+<div class="container" style="text-align:center; top:30%; position:absolute">
+    <i class="fas fa-money-bill-alt" style="font-size: 55px; color: black; text-align: center; display: block;"></i>
+    <p class="text" style="font-size:34px; margin-top: 20px;">Don't forget to collect your cash</p>
+
+    <span id="accountNo" class="placeholder" style="color: black; background: transparent; font-size:24px; margin-top:10px; cursor: pointer;" onclick="toggleAccountNo()">Account No: *</span>
+    <i id="eyeIconAccountNo" class="fa-regular fa-eye" style="cursor: pointer;" onclick="toggleAccountNo()"></i>
+    <br />
+
+    <span id="accountBalance" class="placeholder" style="color: black; background: transparent; font-size:24px; margin-top:10px; cursor: pointer;" onclick="toggleAccountBalance()">Account Balance: $*</span>
+    <i id="eyeIconAccountBalance" class="fa-regular fa-eye" style="cursor: pointer;" onclick="toggleAccountBalance()"></i>
+    <br />
+    
     <span class="placeholder" style="color: black; background: transparent; font-size:24px; margin-top:10px;">Transaction Date: @ViewData["TransactionDate"]</span>
 </div>
