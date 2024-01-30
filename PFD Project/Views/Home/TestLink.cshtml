@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Test";
+}
+
+@*<h1>Test</h1>
+<p>Test para</p>*@
+
+<br />
+<br />
+<br />
+<br />
+
+<div id="google_translate_element"></div>
+
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="~/js/translate.js"></script>
+@*<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        googleTranslateElementInit();
+    });
+
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { pageLanguage: 'en' },
+            'google_translate_element'
+        );
+    }
+</script>*@
+
+<h1>Test</h1>
+<a asp-controller="Home" asp-action="TestLink">Test para</a>
+
+

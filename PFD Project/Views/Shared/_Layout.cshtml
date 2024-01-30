@@ -39,8 +39,11 @@
                     <li class="nav-item mx-1 ml-auto">
                         <a href="#" onClick="toggleCam()" id="camIcon"><i class="fa-solid fa-camera fa-2xl" id="eyeIcon"></i></a>
                     </li>
-                    <li class="nav-item mx-1 ml-auto">
+                    @*<li class="nav-item mx-1 ml-auto">
                         <a href="#" onclick="toggleLanguage()"><i class="fa-solid fa-language fa-2xl" id="langIcon"></i></a>
+                    </li>*@
+                    <li class="nav-item mx-1 ml-auto">
+                        <a id="google_translate_element"></a>
                     </li>
                     <li class="nav-item mx-1 ml-auto">
                         <a href="#" onclick="toggleResize()"><i class="fa-solid fa-font fa-2xl" id="sizeIcon"></i></a>
@@ -89,6 +92,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/reminders.js" asp-append-version="true"></script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="~/js/translate.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

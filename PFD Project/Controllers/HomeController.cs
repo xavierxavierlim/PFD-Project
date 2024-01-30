@@ -586,5 +586,17 @@ namespace PFD_Project.Controllers
             List<Transactions> transactionList = transactionContext.GetAllTransactionsByUserID(userID);
             return View(transactionList);
         }
+
+        // test
+        public ActionResult Test()
+        {
+            return View();
+        }
+
+        // test
+        public ActionResult TestLink()
+        {
+            return View();
+        }
     }
 } 
