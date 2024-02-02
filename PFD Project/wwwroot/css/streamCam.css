@@ -29,3 +29,6 @@
     -webkit-transform: scale(0.7) rotateY(180deg) translate(20%, -5%);
     -moz-transform: scale(0.7) rotateY(180deg) translate(20%, -5%);
 }
+.skiptranslation {
+    display: none;
+}

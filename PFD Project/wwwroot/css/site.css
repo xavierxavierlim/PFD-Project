@@ -218,10 +218,11 @@ body {
     display: block;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 2000px;
     width: 55%;
     background-color: rgb(240, 240, 240);
     box-shadow: 0 0 10px 5px rgb(0, 0, 0, 0.60);
+    transform: translateY(-50%);
 }
 .left, .right {
     display: flex;
