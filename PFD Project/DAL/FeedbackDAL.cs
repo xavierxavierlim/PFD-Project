@@ -67,6 +67,67 @@ namespace PFD_Project.DAL
             cmd.ExecuteNonQuery();
             conn.Close();
         }
+
+        public List<Feedback> GetAllFeedback()
+        {
+            //Create a SqlCommand object from connection object
+            SqlCommand cmd = conn.CreateCommand();
+            //Specify the SELECT SQL statement 
+            cmd.CommandText = @"SELECT * FROM FdbkDescription WHERE InUse = 1";
+            //Open a database connection
+            conn.Open();
+            //Execute the SELECT SQL through a DataReader
+            SqlDataReader reader = cmd.ExecuteReader();
+            //Read all records until the end, save data into a staff list
+            List<Feedback> feedbackList = new List<Feedback>();
+            while (reader.Read())
+            {
+                feedbackList.Add(
+                new Feedback
+                {
+                    DescID = reader.GetInt32(0),
+                    Description = reader.GetString(1),
+                    InUse = reader.GetString(2)[0]
+                }
+                );
+            }
+            //Close DataReader
+            reader.Close();
+            //Close the database connection
+            conn.Close();
+            return feedbackList;
+        }
+
+        public List<Feedback> GetSubFeedbackByDescID(int DescID)
+        {
+            //Create a SqlCommand object from connection object
+            SqlCommand cmd = conn.CreateCommand();
+            //Specify the SELECT SQL statement 
+            cmd.CommandText = @"SELECT * FROM FdbkSubDesc WHERE DescID = @DescID";
+            cmd.Parameters.AddWithValue("@DescID", DescID);
+            //Open a database connection
+            conn.Open();
+            //Execute the SELECT SQL through a DataReader
+            SqlDataReader reader = cmd.ExecuteReader();
+            //Read all records until the end, save data into a staff list
+            List<Feedback> subFeedbackList = new List<Feedback>();
+            while (reader.Read())
+            {
+                subFeedbackList.Add(
+                new Feedback
+                {
+                    SubID = reader.GetInt32(0),
+                    SubDescription = reader.GetString(1),
+                    DescID = reader.GetInt32(2)
+                }
+                );
+            }
+            //Close DataReader
+            reader.Close();
+            //Close the database connection
+            conn.Close();
+            return subFeedbackList;
+        }
     }
 }
 

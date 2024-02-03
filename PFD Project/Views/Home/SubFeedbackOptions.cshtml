@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<PFD_Project.Models.Feedback>
 
 @{
-    ViewData["Title"] = "Feedback Options";
+    ViewData["Title"] = "FeedbackOptionsTest";
 }
 
 <!DOCTYPE html>
@@ -41,11 +41,11 @@
         <p class="text" id="hearmore">We wish to hear from you more on how we can continue improving our ATM services.</p>
         <p class="text" id="select">Please select one of the options below</p>
 
-        <form asp-controller="Home" asp-action="FeedbackOptionsTest" method="post">
+        <form asp-controller="Home" asp-action="SubFeedbackOptionsTest" method="post">
             <div class="feedback-container" style="margin-top: 10px;">
                 @foreach (var Item in Model)
                 {
-                    <button class="rCon feedback-option" asp-route-DescID=@Item.DescID asp-route-description="@Item.Description">@Html.DisplayFor(modelItem => Item.Description)</button>
+                    <button class="rCon feedback-option" asp-route-SubDescription="@Item.SubDescription">@Html.DisplayFor(modelItem => Item.SubDescription)</button>
                 }
             </div>
         </form>

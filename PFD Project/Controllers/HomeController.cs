@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using System.Web.Helpers;
+using Org.BouncyCastle.Ocsp;
 
 
 namespace PFD_Project.Controllers
@@ -203,72 +204,119 @@ namespace PFD_Project.Controllers
             }
         }
 
-        public IActionResult FeedbackOptions()
+        //public IActionResult FeedbackOptions()
+        //{
+        //    return View();
+        //}
+
+        public ActionResult FeedbackOptions()
         {
-            return View();
+            List<Feedback> feedbackList = new List<Feedback>();
+            feedbackList = feedbackContext.GetAllFeedback();
+            return View(feedbackList);
         }
 
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult FeedbackOptions(string description)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (description == "Slow Transaction Processing")
+        //        {
+        //            feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+        //            return RedirectToAction("SlowTransactionProcessing");
+        //        }
+
+        //        else if (description == "Difficulty Using ATM")
+        //        {
+        //            feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+        //            return RedirectToAction("DifficultyUsingATM");
+        //        }
+
+        //        else if (description == "Display Uninteractive")
+        //        {
+        //            feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+        //            return RedirectToAction("DisplayUninteractive");
+        //        }
+
+        //        else if (description == "Lighting Issues")
+        //        {
+        //            feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+        //            return RedirectToAction("LightingIssues");
+        //        }
+
+        //        else if (description == "Transaction Errors")
+        //        {
+        //            feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+        //            return RedirectToAction("TransactionErrors");
+        //        }
+
+        //        else if (description == "Accessibility Issues")
+        //        {
+        //            feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+        //            return RedirectToAction("AccessibilityIssues");
+        //        }
+
+        //        else if (description == "Security Issues")
+        //        {
+        //            feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+        //            return RedirectToAction("SecurityIssues");
+        //        }
+
+        //        else if (description == "Hygiene Issues")
+        //        {
+        //            feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
+        //            return RedirectToAction("HygieneIssues");
+        //        }
+
+        //        return RedirectToAction("Thanks");
+        //    }
+            
+        //    else
+        //    {
+        //        return RedirectToAction("FeedbackOptions");
+        //    }
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult FeedbackOptions(string description)
+        public ActionResult FeedbackOptions(string Description, int DescID)
         {
             if (ModelState.IsValid)
             {
-                if (description == "Slow Transaction Processing")
-                {
-                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
-                    return RedirectToAction("SlowTransactionProcessing");
-                }
-
-                else if (description == "Difficulty Using ATM")
-                {
-                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
-                    return RedirectToAction("DifficultyUsingATM");
-                }
-
-                else if (description == "Display Uninteractive")
-                {
-                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
-                    return RedirectToAction("DisplayUninteractive");
-                }
-
-                else if (description == "Lighting Issues")
-                {
-                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
-                    return RedirectToAction("LightingIssues");
-                }
-
-                else if (description == "Transaction Errors")
-                {
-                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
-                    return RedirectToAction("TransactionErrors");
-                }
-
-                else if (description == "Accessibility Issues")
-                {
-                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
-                    return RedirectToAction("AccessibilityIssues");
-                }
-
-                else if (description == "Security Issues")
-                {
-                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
-                    return RedirectToAction("SecurityIssues");
-                }
-
-                else if (description == "Hygiene Issues")
-                {
-                    feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), description);
-                    return RedirectToAction("HygieneIssues");
-                }
-
-                return RedirectToAction("Thanks");
+                feedbackContext.addFeedbackDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), Description);
+                HttpContext.Session.SetInt32("DescID", DescID);
+                return RedirectToAction("SubFeedbackOptions");
             }
-            
+
             else
             {
                 return RedirectToAction("FeedbackOptions");
+            }
+        }
+
+        public ActionResult SubFeedbackOptions()
+        {
+            List<Feedback> subFeedbackList = new List<Feedback>();
+            int descID = Convert.ToInt32(HttpContext.Session.GetInt32("DescID"));
+            subFeedbackList = feedbackContext.GetSubFeedbackByDescID(descID);
+            return View(subFeedbackList);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SubFeedbackOptions(string SubDescription)
+        {
+            if (ModelState.IsValid)
+            {
+                feedbackContext.addFeedbackSpecificDescription(Convert.ToInt32(HttpContext.Session.GetInt32("FeedbackID")), SubDescription);
+                return RedirectToAction("Thanks");
+            }
+
+            else
+            {
+                return RedirectToAction("FeedbackOptionsTest");
             }
         }
 
