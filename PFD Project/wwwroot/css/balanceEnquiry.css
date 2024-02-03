@@ -1,0 +1,106 @@
+﻿body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.summary {
+    flex-grow: 1;
+}
+
+.balance-section, .debt-section {
+    margin-bottom: 20px;
+}
+
+.balance-info, .debt-info {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    height: 200px;
+    margin-left: 70px;
+}
+
+.header {
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 70px;
+}
+
+.title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-left: 70px;
+}
+
+.vertical-line {
+    width: 1px;
+    background-color: #ccc;
+    margin: 20px 40px;
+}
+
+.transaction-history {
+    flex-grow: 2;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+    ul li {
+        margin-bottom: 10px;
+    }
+
+
+.placeholder{
+    color: black;
+    background: transparent;
+    display: block;
+    margin-top: 45px;
+    margin-left: 45px;
+}
+
+.vertical-line {
+    width: 3px;
+    height: 90%; /* Extend the height of the line to cover the entire container */
+    position: absolute; /* Position the line absolutely */
+    top: 0; /* Align the line to the top of the container */
+    left: 50%; /* Position the line in the middle horizontally */
+    transform: translateX(-50%); /* Move the line back by half of its width to center it */
+}
+
+.history-title{
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 500px;
+}
+
+.history-table {
+    border: 1px solid;
+    width: 450px; /* Adjust the width as needed */
+    border-collapse: collapse;
+    margin-left: 460px; /* Adjust the margin as needed */
+    margin-top: 20px; /* Add margin to separate from the summary section */
+}
+
+.history-row {
+    display: flex;
+    border-bottom: 1px;
+}
+
+.history-item {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.history-placeholder{
+    text-align: center;
+    margin-top: 10px;
+}

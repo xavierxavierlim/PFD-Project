@@ -1,75 +1,50 @@
 ﻿@model IEnumerable<PFD_Project.Models.Transactions>
 
-@{
-    ViewData["Title"] = "Balance Enquiry";
-}
-<div class="container" style="display: grid;justify-content: center;padding-top: 8%;width: fit-content;">
-    <div class="col-md-6" style="width: 1000px;">
-        <div class="card border-bold" style="height: 550px;">
-            <div class="card-body" style="display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between;">
-                <div style="width: 100%;display: flex;flex-direction: column;margin-left: 5%;">
-					<span class="placeholder" style="color: black; background: transparent;"><b>Your Account Summary:</b></span>
-                    <span class="placeholder" style="color: black; background: transparent; margin-top:30px;">Account Balance:</span>
-					<div class="card border-bold" style="height:150px; width:150px; margin-top:10px;">
-                        <div class="card-body" style="text-align:center;"> 
-                            <span class="placeholder" style=" margin-top:3rem; color:black; background:transparent;">$@ViewData["HomeBalance"]</span>
-                        </div>
-                    </div>
-                    <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                        <span class="placeholder" style="color: black; background: transparent; margin-top:10px;">Outstanding Debt:</span>
-						<div class="card border-bold" style="height:150px; width:150px; margin-top:10px;">
-                            <div class="card-body" style="text-align:center;">
-                                <span class="placeholder" style=" margin-top:3rem; color:black; background:transparent;">$10.00</span>
-                            </div>
-                        </div>
-                    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Enquiry</title>
+    <link rel="stylesheet" href="/css/balanceEnquiry.css">
+</head>
+<body>
+    <div class="container">
+        <div class="summary">
+            <p class="header">Here is your account summary</p>
+            <br />
+            <div class="balance-section">
+                <p class="title">Account Balance:</p>
+                <div class="balance-info">
+                    <span class="placeholder">Your Account Balance</span>
+                    <span class="placeholder">$@ViewData["HomeBalance"]</span>
                 </div>
-
-
-                <div style="width: 100%; display: flex; flex-direction: column; align-items: flex-start;">
-					<span class="placeholder" style="color: black; background: transparent; margin-left:0%;"><b>Your Transaction History:</b></span>
-                    
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.TransactionType)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Amount)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.TransactionDate)
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (Model != null)
-                            {
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.TransactionType)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Amount)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.TransactionDate)
-                                        </td>
-                                    </tr>
-                                }
-                            }
-                        </tbody>
-                    </table>
-
-                    <div class="divider" style="height: 64ch;width: 1px;background-color: lightgrey;margin-left: -3vw;margin-top: -21ch;"></div>
+            </div>
+            <br />
+            <br />
+            <div class="debt-section">
+                <p class="title">Outstanding Debt:</p>
+                <div class="debt-info">
+                    <span class="placeholder">Remaining Debt</span>
+                    <span class="placeholder">$10.00</span>
                 </div>
             </div>
         </div>
-     </div>
-</div>
+        <div class="vertical-line"></div>
+        <div class="transaction-history">
+            <p class="history-title">Transaction History</p>
+            <div class="history-table">
+                @foreach (var transaction in Model)
+                {
+                    <div class="history-row">
+                        <div class="placeholder history-placeholder">@Html.DisplayFor(modelItem => transaction.TransactionType)</div>
+                        <div class="placeholder history-placeholder">@Html.DisplayFor(modelItem => transaction.TransactionDate)</div>
+                        <div class="placeholder history-placeholder">@Html.DisplayFor(modelItem => transaction.Amount)</div>
+                    </div>
+                }
+            </div>
+        </div>
 
 
+</body>
+</html>
