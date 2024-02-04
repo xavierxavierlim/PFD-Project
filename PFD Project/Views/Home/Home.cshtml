@@ -52,26 +52,33 @@
             </div>
         </div>
     </div>
-    <div class="right col-6">
+    <div class="right col-6" style="position: relative;">
         <div class="intRight">
             <span class="rSub functionTitle">Non-Cash Services</span>
             <div class="cardGrid">
                 <div class="cardContentRight">
-					<div class="row">
-						<button class="noncashContent rTitle" asp-controller="Home" asp-action="">
+                    <div class="row">
+                        <button class="noncashContent rTitle" asp-controller="Home" asp-action="">
                             Activate Card
                         </button>
                         <a class="noncashContent rTitle" asp-controller="Home" asp-action="BalanceEnquiry" style="color:black; padding-left:5%; padding-top:16%; text-decoration:none">
                             Balance Enquiry
                         </a>
                         @* <a style="display:flex;">
-                            <i class="fa-solid fa-chevron-right fa-2xl"></i>
+                        <i class="fa-solid fa-chevron-right fa-2xl"></i>
                         </a> *@
                     </div>
                 </div>
             </div>
+            <div class="more-options" style="position: absolute; bottom: 0; right: 4cm; margin-bottom: 10px; text-decoration: none; color: black;">
+                <button class="noncashContent rTitle" style="border: none; background: transparent; color: black; white-space: nowrap; box-shadow: none; padding: 5px 10px;" onmouseover="this.style.boxShadow = 'none'" onmouseout="this.style.boxShadow = 'none';">
+                    More Options <i class="fa-solid fa-chevron-right" style="margin-left: 5px;"></i>
+                </button>
+            </div>
         </div>
     </div>
+
+
 </div>
 <script>
     document.getElementById('enterAmountPlaceholder').addEventListener('input', function () {
