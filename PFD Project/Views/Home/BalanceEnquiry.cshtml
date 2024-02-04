@@ -38,9 +38,10 @@
                 {
                     <div class="history-row">
                         <div class="placeholder history-placeholder">@Html.DisplayFor(modelItem => transaction.TransactionType)</div>
-                        @*<div class="placeholder history-placeholder">@Html.DisplayFor(modelItem => transaction.TransactionDate)</div>*@
-                        <div class="placeholder history-placeholder">@(((DateTime)transaction.TransactionDate).ToString("yyyy-MM-dd HH:mm:ss"))</div>
                         <div class="placeholder history-placeholder">@Html.DisplayFor(modelItem => transaction.Amount)</div>
+                        <div class="placeholder history-placeholder">@(((DateTime)transaction.TransactionDate).ToString("yyyy-MM-dd HH:mm:ss"))</div>
+                        @*<div class="placeholder history-placeholder">@(((DateTime)transaction.TransactionDate).ToString("yyyy-MM-dd HH:mm:ss"))</div>*@
+                        @*<div class="placeholder history-placeholder">@Html.DisplayFor(modelItem => transaction.Amount)</div>*@
                     </div>
                 }
             </div>
