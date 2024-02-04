@@ -246,8 +246,17 @@ body {
     top: 5%;
     right: 5%;
 }
+.cardContainer {
+    font-size:large;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    position: absolute;
+    top: 35%;
+    width: 86%;
+    justify-content: space-evenly;
+    align-items: center;
+}
 .amountCard {
-    
     text-align: center;
     border-radius: 15px;
     border: 0px solid darkslategrey;
@@ -272,8 +281,8 @@ body {
     border: 2px solid darkslategray;
     border-radius: 8px;
     color: black;
-    padding-left: 5%;
-    padding-top: 16%;
+    padding-left: 3%;
+    padding-top: 14%;
     text-decoration: none
     /*transform: translate(0, 0);*/
 }

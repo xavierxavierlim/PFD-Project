@@ -13,6 +13,7 @@ using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using System.Web.Helpers;
 using Org.BouncyCastle.Ocsp;
+using Microsoft.IdentityModel.Tokens;
 
 
 namespace PFD_Project.Controllers
@@ -50,6 +51,11 @@ namespace PFD_Project.Controllers
         public ActionResult ActivateCard(IFormCollection formData)
         {
             string date = formData["date"];
+            if (string.IsNullOrEmpty(date))
+            {
+                TempData["Message"] = "Please input an expiry date";
+                return RedirectToAction();
+            }
             Console.WriteLine(date);
             string accountNo = HttpContext.Session.GetString("AccountNo");
             int userID = usersContext.GetUserIDByAccountNo(accountNo);

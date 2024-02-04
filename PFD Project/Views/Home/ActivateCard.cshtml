@@ -3,15 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balance Enquiry</title>
-    <link rel="stylesheet" href="/css/balanceEnquiry.css">
+    <title>Activate Card</title>
+    <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
-    <input type="checkbox" id="cardno" name="" value="Active">
-    <label for="cardno">@ViewData["CardNum"]</label>
-    <form asp-action="ActivateCard" method="post">
-        <input type="text" id="expDate" maxlength="7" name="date">
-        <button class="btn btn-primary" type="submit">Next <i class="fa-solid fa-right-to-bracket fa-sm"></i></button>
-    </form>
+    <div class="cardContainer">
+        <span>Activate</span>        
+        <span>Credit/Debit Card</span>
+        <span>Expiry date (MM/YYYY)</span>
+        <input type="checkbox" id="cardno" name="" value="Active" onclick="showButton()" style="height:65%"/>
+        <span for="cardno">@ViewData["CardNum"]</span>
+        <form asp-action="ActivateCard" method="post">
+            <input type="text" id="expDate" maxlength="7" name="date">
+            <button class="btn btn-primary" id="nextBtn" type="submit" style="visibility:hidden">Next<i class="fa-solid fa-right-to-bracket fa-sm"></i></button>
+        </form>
+    </div>
+    <span style="position:absolute; color:red; top: 60%; left: 50%; transform: translateX(-50%);"><b>@TempData["Message"]</b></span>
 </body>
 </html>
+<script>
+    const checkbox = document.getElementById('cardno');
+    const button = document.getElementById('nextBtn');
+
+    checkbox.addEventListener('change', function () {
+        if (this.checked) {
+            button.style.visibility = 'visible';
+        } else {
+            button.style.visibility = 'hidden';
+        }
+    });
+</script>
