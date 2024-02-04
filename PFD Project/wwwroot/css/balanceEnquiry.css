@@ -1,15 +1,13 @@
-﻿body {
-    font-family: Arial, sans-serif;
-}
+﻿
 
-.container {
+.containerzj {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     padding: 2vh; /* Adjust padding using viewport units */
 }
 
-.summary {
+.summaryzj {
     flex-grow: 1;
 }
 
@@ -25,26 +23,26 @@
     margin-left: 7vw; /* Adjust margin using viewport units */
 }
 
-.header {
+.headerzj {
     font-weight: bold;
     margin-bottom: 1vh; /* Adjust margin using viewport units */
     margin-left: 7vw; /* Adjust margin using viewport units */
     white-space: nowrap;
 }
 
-.title {
+.titlezj {
     font-weight: bold;
     margin-bottom: 0.5vh; /* Adjust margin using viewport units */
     margin-left: 7vw; /* Adjust margin using viewport units */
 }
 
-.vertical-line {
-    width: 0.1vw; /* Adjust width using viewport units */
-    background-color: #ccc;
-    margin: 2vh 4vw; /* Adjust margin using viewport units */
-}
+/*.vertical-linezj {
+    width: 0.1vw;*/ /* Adjust width using viewport units */
+    /*background-color: #ccc;
+    margin: 2vh 4vw;*/ /* Adjust margin using viewport units */
+/*}*/
 
-.transaction-history {
+.transaction-historyzj {
     flex-grow: 2;
 }
 
@@ -52,13 +50,12 @@ ul {
     list-style-type: none;
     padding: 0;
 }
+/*ul li {
+        margin-bottom: 1vh;*/ /* Adjust margin using viewport units */
+/*}*/
 
-    ul li {
-        margin-bottom: 1vh; /* Adjust margin using viewport units */
-    }
 
-
-.placeholder {
+.placeholderzj {
     color: black;
     background: transparent;
     display: block;
@@ -67,11 +64,12 @@ ul {
     text-align: center;
 }
 
-.vertical-line {
+.vertical-linezj {
     width: 0.3vw; /* Adjust width using viewport units */
     height: 90vh; /* Adjust height using viewport units */
     position: absolute;
     top: 0;
+    background-color: #ccc;
     left: 50vw; /* Adjust left position using viewport units */
     transform: translateX(-50%); /* Move the line back by half of its width to center it */
 }

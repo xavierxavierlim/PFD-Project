@@ -16,16 +16,16 @@
         <form asp-controller="Home" asp-action="MoreOption" method="post">
             <div class="feedback-container">
                 <button id="AcitvateCard" class="rCon Activate-Card" asp-route-description="Activate Card">
-                    <i class="fa-regular fa-credit-card"></i>Activate Card
+                    <a class="fa-regular fa-credit-card"></a>Activate Card
                 </button>
                 <button id="CheckBalanceInquiry" class="rCon Check-Balance-Inquiry" asp-route-description="Check Balance Inquiry">
-                    <i class="fa-solid fa-money-bill"></i>Check Balance Enquiry
+                    <a asp-controller="Home" asp-action="BalanceEnquiry" class="fa-solid fa-money-bill"></a>Check Balance Enquiry
                 </button>
                 <button id="BillPayment" class="rCon Bill-Payment" asp-route-description="Bill Payment">
-                    <i class="fa-solid fa-receipt"></i>Bill Payment
+                    <a class="fa-solid fa-receipt"></a>Bill Payment
                 </button>
                 <button id="FundsTransfer" class="rCon Funds-Transfer" asp-route-description="Funds Transfer">
-                    <i class="fa-solid fa-money-bill-transfer"></i>Funds Transfer
+                    <a asp-controller="Home" asp-action="TransferConfirmation" class="fa-solid fa-money-bill-transfer"></a>Funds Transfer
                 </button>
             </div>
         </form>
