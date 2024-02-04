@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <div class="summary">
-            <p class="header">Here is your account summary</p>
+            <p class="header">Here is your account summary,</p>
             <br />
             <div class="balance-section">
                 <p class="title">Account Balance:</p>
@@ -34,7 +34,7 @@
         <div class="transaction-history">
             <p class="history-title">Transaction History</p>
             <div class="history-table">
-                @foreach (var transaction in Model)
+                @foreach (var transaction in Model.OrderByDescending(t => t.TransactionDate))
                 {
                     <div class="history-row">
                         <div class="placeholder history-placeholder">@Html.DisplayFor(modelItem => transaction.TransactionType)</div>
