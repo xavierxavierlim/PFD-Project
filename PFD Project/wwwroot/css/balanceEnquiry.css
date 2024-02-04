@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 20px;
+    padding: 2%;
 }
 
 .summary {
@@ -14,33 +14,33 @@
 }
 
 .balance-section, .debt-section {
-    margin-bottom: 20px;
+    margin-bottom: 2%;
 }
 
 .balance-info, .debt-info {
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 10px;
-    height: 200px;
-    margin-left: 70px;
+    padding: 1%;
+    height: 20%;
+    margin-left: 10%;
 }
 
 .header {
     font-weight: bold;
-    margin-bottom: 10px;
-    margin-left: 70px;
+    margin-bottom: 1%;
+    margin-left: 10%;
 }
 
 .title {
     font-weight: bold;
-    margin-bottom: 5px;
-    margin-left: 70px;
+    margin-bottom: 0.5%;
+    margin-left: 10%;
 }
 
 .vertical-line {
-    width: 1px;
+    width: 0.1%;
     background-color: #ccc;
-    margin: 20px 40px;
+    margin: 2% 4%;
 }
 
 .transaction-history {
@@ -53,39 +53,38 @@ ul {
 }
 
     ul li {
-        margin-bottom: 10px;
+        margin-bottom: 1%;
     }
 
-
-.placeholder{
+.placeholder {
     color: black;
     background: transparent;
     display: block;
-    margin-top: 45px;
-    margin-left: 45px;
+    margin-top: 9%;
+    margin-left: 9%;
 }
 
 .vertical-line {
-    width: 3px;
-    height: 90%; /* Extend the height of the line to cover the entire container */
-    position: absolute; /* Position the line absolutely */
-    top: 0; /* Align the line to the top of the container */
-    left: 50%; /* Position the line in the middle horizontally */
-    transform: translateX(-50%); /* Move the line back by half of its width to center it */
+    width: 0.15%;
+    height: 90%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.history-title{
+.history-title {
     font-weight: bold;
-    margin-bottom: 10px;
-    margin-left: 500px;
+    margin-bottom: 1%;
+    margin-left: 22%;
 }
 
 .history-table {
     border: 1px solid;
-    width: 450px; /* Adjust the width as needed */
+    width: 45%;
     border-collapse: collapse;
-    margin-left: 460px; /* Adjust the margin as needed */
-    margin-top: 20px; /* Add margin to separate from the summary section */
+    margin-left: 46%;
+    margin-top: 2%;
 }
 
 .history-row {
@@ -95,12 +94,13 @@ ul {
 
 .history-item {
     flex: 1;
-    padding: 10px;
+    padding: 1%;
     font-size: 14px;
     text-align: center;
 }
 
-.history-placeholder{
+.history-placeholder {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 1%;
+    margin-left: 2%;
 }
