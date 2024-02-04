@@ -1,52 +1,40 @@
 ﻿@model IEnumerable<PFD_Project.Models.Transactions>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balance Enquiry</title>
-    <link rel="stylesheet" href="/css/balanceEnquiry.css">
-</head>
-<body>
-    <div class="container">
-        <div class="summary">
-            <p class="header">Here is your account summary,</p>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="containerzj">
+        <div class="summaryzj">
+            <p class="headerzj">Here is your account summary,</p>
             <br />
             <div class="balance-section">
-                <p class="title">Account Balance:</p>
+                <p class="titlezj">Account Balance:</p>
                 <div class="balance-info">
-                    <span class="placeholder">Your Account Balance</span>
-                    <span class="placeholder">$@ViewData["HomeBalance"]</span>
+                    <span class="placeholderzj">Your Account Balance</span>
+                    <span class="placeholderzj">$@ViewData["HomeBalance"]</span>
                 </div>
             </div>
             <br />
             <br />
             <div class="debt-section">
-                <p class="title">Outstanding Debt:</p>
+                <p class="titlezj">Outstanding Debt:</p>
                 <div class="debt-info">
-                    <span class="placeholder">Remaining Debt</span>
-                    <span class="placeholder">$10.00</span>
+                    <span class="placeholderzj">Remaining Debt</span>
+                    <span class="placeholderzj">$10.00</span>
                 </div>
             </div>
         </div>
-        <div class="vertical-line"></div>
+        <div class="vertical-linezj"></div>
         <div class="transaction-history">
             <p class="history-title">Transaction History</p>
             <div class="history-table">
                 @foreach (var transaction in Model.OrderByDescending(t => t.TransactionDate))
                 {
                     <div class="history-row">
-                        <div class="placeholder history-placeholder">@Html.DisplayFor(modelItem => transaction.TransactionType)</div>
-                        <div class="placeholder history-placeholder">@(((DateTime)transaction.TransactionDate).ToString("yyyy-MM-dd HH:mm:ss"))</div>
-                        <div class="placeholder history-placeholder">@Html.DisplayFor(modelItem => transaction.Amount)</div>
-                        @*<div class="placeholder history-placeholder">@(((DateTime)transaction.TransactionDate).ToString("yyyy-MM-dd HH:mm:ss"))</div>*@
-                        @*<div class="placeholder history-placeholder">@Html.DisplayFor(modelItem => transaction.Amount)</div>*@
+                        <div class="placeholderzj history-placeholder">@Html.DisplayFor(modelItem => transaction.TransactionType)</div>
+                        <div class="placeholderzj history-placeholder">@(((DateTime)transaction.TransactionDate).ToString("yyyy-MM-dd HH:mm:ss"))</div>
+                        <div class="placeholderzj history-placeholder">@Html.DisplayFor(modelItem => transaction.Amount)</div>
                     </div>
                 }
             </div>
         </div>
-
-
-</body>
-</html>
+    </div>
