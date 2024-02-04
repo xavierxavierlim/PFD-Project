@@ -62,8 +62,9 @@ ul {
     color: black;
     background: transparent;
     display: block;
-    margin-top: 4.5vh; /* Adjust margin using viewport units */
-    margin-left: 4vw; /* Adjust margin using viewport units */
+    margin-top: 8vh; /* Adjust margin using viewport units */
+    margin-left: 0.5vw; /* Adjust margin using viewport units */
+    text-align: center;
 }
 
 .vertical-line {
@@ -103,4 +104,5 @@ ul {
 .history-placeholder {
     text-align: center;
     margin-top: 1vh; /* Adjust margin using viewport units */
+    margin-left: 5vw;
 }
