@@ -271,6 +271,10 @@ body {
     left: 50px;
     border: 2px solid darkslategray;
     border-radius: 8px;
+    color: black;
+    padding-left: 5%;
+    padding-top: 16%;
+    text-decoration: none
     /*transform: translate(0, 0);*/
 }
 .noncashContent:hover {

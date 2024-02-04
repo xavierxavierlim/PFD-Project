@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Enquiry</title>
+    <link rel="stylesheet" href="/css/balanceEnquiry.css">
+</head>
+<body>
+    <input type="checkbox" id="cardno" name="" value="Active">
+    <label for="cardno">@ViewData["CardNum"]</label>
+    <form asp-action="ActivateCard" method="post">
+        <input type="text" id="expDate" maxlength="7" name="date">
+        <button class="btn btn-primary" type="submit">Next <i class="fa-solid fa-right-to-bracket fa-sm"></i></button>
+    </form>
+</body>
+</html>

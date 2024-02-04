@@ -38,12 +38,36 @@ namespace PFD_Project.Controllers
         {
             return View();
         }
+
+        public ActionResult ActivateCard() 
+        {
+            ViewData["CardNum"] = HttpContext.Session.GetString("CardNum");
+            return View(); 
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ActivateCard(IFormCollection formData)
+        {
+            string date = formData["date"];
+            Console.WriteLine(date);
+            string accountNo = HttpContext.Session.GetString("AccountNo");
+            int userID = usersContext.GetUserIDByAccountNo(accountNo);
+            usersContext.UpdateDate(date, userID);
+            return RedirectToAction("Thanks");
+
+        }
         public ActionResult BalanceEnquiry()
         {
             ViewData["HomeBalance"] = HttpContext.Session.GetString("HomeBalance");
             int userID = Convert.ToInt32(HttpContext.Session.GetInt32("userID"));
             List<Transactions> transactionList = transactionContext.GetAllTransactionsByUserID(userID);
             return View(transactionList);
+        }
+
+        public ActionResult BillPayment()
+        {
+            return View();
         }
 
         public ActionResult LogOut()
@@ -111,6 +135,8 @@ namespace PFD_Project.Controllers
             decimal balance = usersContext.GetBalanceByAccountNo(HttpContext.Session.GetString("AccountNo"));
             string balanceString = balance.ToString("########.00");
             HttpContext.Session.SetString("HomeBalance", balanceString);
+            string card = usersContext.GetCardNoByAccountNo(HttpContext.Session.GetString("AccountNo"));
+            HttpContext.Session.SetString("CardNum", card);
             return View(newTrans);
         }
 

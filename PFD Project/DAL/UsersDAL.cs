@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Data;
+using System.Data.SqlClient;
 using PFD_Project.Models;
 
 namespace PFD_Project.DAL
@@ -42,7 +43,9 @@ namespace PFD_Project.DAL
                     Name = reader.GetString(2),
                     Pin = reader.GetString(3),
                     Balance = reader.GetDecimal(4),
-                    PhoneNo = reader.GetString(5)
+                    PhoneNo = reader.GetString(5),
+                    CardNo = reader.GetString(6),
+                    ExpDate = reader.GetString(7)
                 }
                 );
             }
@@ -173,6 +176,30 @@ namespace PFD_Project.DAL
             return UserID;
         }
 
+        public string GetCardNoByAccountNo(string accountNo)
+        {
+            string cardno = null;
+            //Create a SqlCommand object from connection object
+            SqlCommand cmd = conn.CreateCommand();
+            //Specify the SELECT SQL statement 
+            cmd.CommandText = @"SELECT CardNo FROM Users WHERE AccountNo = @accountNo";
+            cmd.Parameters.AddWithValue("@accountNo", accountNo);
+            //Open a database connection
+            conn.Open();
+            //Execute the SELECT SQL through a DataReader
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    cardno = reader.GetString(0);
+                }
+            }
+            reader.Close();
+            conn.Close();
+            return cardno;
+        }
+
         public decimal GetBalanceByAccountNo(string accountNo)
         {
             decimal balance = 0;
@@ -234,6 +261,22 @@ namespace PFD_Project.DAL
             //Specify the SELECT SQL statement 
             cmd.CommandText = @"UPDATE Users SET Balance = @balance WHERE UserID = @userID";
             cmd.Parameters.AddWithValue("@balance", balance);
+            cmd.Parameters.AddWithValue("@userID", userID);
+            //Open a database connection
+            conn.Open();
+            //Execute the SELECT SQL through a DataReader
+            cmd.ExecuteNonQuery();
+            cmd.ExecuteScalar();
+            conn.Close();
+        }
+
+        public void UpdateDate(string date, int userID)
+        {
+            //Create a SqlCommand object from connection object
+            SqlCommand cmd = conn.CreateCommand();
+            //Specify the SELECT SQL statement 
+            cmd.CommandText = @"UPDATE Users SET ExpDate = @expdate WHERE UserID = @userID";
+            cmd.Parameters.AddWithValue("@expdate", date);
             cmd.Parameters.AddWithValue("@userID", userID);
             //Open a database connection
             conn.Open();
