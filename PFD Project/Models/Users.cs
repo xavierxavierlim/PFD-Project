@@ -11,5 +11,7 @@ namespace PFD_Project.Models
         public string Pin { get; set; }
         public decimal Balance { get; set; }
         public string PhoneNo { get; set; }
+        public string CardNo { get; set; }
+        public string ExpDate { get; set; }
     }
 }

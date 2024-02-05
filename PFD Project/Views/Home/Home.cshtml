@@ -58,11 +58,14 @@
             <div class="cardGrid">
                 <div class="cardContentRight">
                     <div class="row">
-                        <button class="noncashContent rTitle" asp-controller="Home" asp-action="">
+                        <a class="noncashContent rTitle" asp-controller="Home" asp-action="ActivateCard">
                             Activate Card
-                        </button>
-                        <a class="noncashContent rTitle" asp-controller="Home" asp-action="BalanceEnquiry" style="color:black; padding-left:5%; padding-top:16%; text-decoration:none">
+                        </a>
+                        <a class="noncashContent rTitle" asp-controller="Home" asp-action="BalanceEnquiry">
                             Balance Enquiry
+                        </a>
+                        <a class="noncashContent rTitle" asp-controller="Home" asp-action="BillPayment">
+                            Bill Payment
                         </a>
                         @* <a style="display:flex;">
                         <i class="fa-solid fa-chevron-right fa-2xl"></i>
