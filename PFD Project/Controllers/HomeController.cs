@@ -598,13 +598,13 @@ namespace PFD_Project.Controllers
                 string accountNo = HttpContext.Session.GetString("AccountNo");
                 string name = usersContext.GetUserNameByAccountNo(accountNo) ?? "JIADONG";
                 string accountSid = "ACf7fcc346f1d1fc1b8355f14f206328d6";
-                string authToken = "bceca3f97f7f9f939efb019b96f7d192";
+                string authToken = "a45f043b4baaf40d288f4a032b12baeb";
                 TwilioClient.Init(accountSid, authToken);
 
                 var message = MessageResource.Create(
                     body: name.ToUpper() + ": A transaction on " + Convert.ToString(DateTime.Now) + " was flagged as VULNERABLE." +
                     " Contact OCBC customer service or visit a local branch at +65 6363 3333 / OCBC.com to report fraud or theft.",
-                    from: new Twilio.Types.PhoneNumber("+12056569336"),
+                    from: new Twilio.Types.PhoneNumber("+19124912746"),
                     to: new Twilio.Types.PhoneNumber("+6597864174")
                 );
 
