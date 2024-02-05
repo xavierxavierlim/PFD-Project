@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="~/css/streamCam.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/css/resizeScreen.css" asp-append-version="true" />
     <link rel="stylesheet" href="/css/balanceEnquiry.css" asp-append-version="true">
+    <link rel="stylesheet" href="/css/moreOption.css" asp-append-version="true">
     <script src="~/js/tracking-min.js"></script>
     <script src="~/js/face-min.js"></script>
     <script src="~/js/main.js" defer></script>
@@ -26,7 +27,7 @@
     <div id="warningMessage">
         <span class="rCon">Warning: Possible shoulder surfing</span>
     </div>
-	<header style="position: absolute; z-index: 5; width: 100%;top: 0; transform: translate(0, -100%);">
+	<header style="position: relative; z-index: 50; width: 100%;top: 0; transform: translate(0, 0%);">
         <div class="row my-3 mx-2" >
             <div class="col text-left">
                 <ul class="navbar-nav list-group-horizontal">
@@ -40,9 +41,6 @@
                     <li class="nav-item mx-1 ml-auto">
                         <a href="#" onClick="toggleCam()" id="camIcon"><i class="fa-solid fa-camera fa-2xl" id="eyeIcon"></i></a>
                     </li>
-                    @*<li class="nav-item mx-1 ml-auto">
-                        <a href="#" onclick="toggleLanguage()"><i class="fa-solid fa-language fa-2xl" id="langIcon"></i></a>
-                    </li>*@
                     <li class="nav-item mx-1 ml-auto">
                         <a id="google_translate_element"></a>
                     </li>

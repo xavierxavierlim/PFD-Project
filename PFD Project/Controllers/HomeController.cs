@@ -436,7 +436,7 @@ namespace PFD_Project.Controllers
             }
         }
 
-        public IActionResult TransactionErrors()
+        public ActionResult TransactionErrors()
         {
             return View();
         }
@@ -520,27 +520,27 @@ namespace PFD_Project.Controllers
             }
         }
 
-        public IActionResult Thanks()
+        public ActionResult Thanks()
         {
             return View();
         }
 
-        public IActionResult WithdrawAmount()
+        public ActionResult WithdrawAmount()
         {
             return View();
         }
 
-        public IActionResult TransferConfirmation()
+        public ActionResult TransferConfirmation()
         {
             return View();
         }
 
-        public IActionResult MoreOption()
+        public ActionResult MoreOption()
         {
             return View();
         }
 
-        public IActionResult ShowBalance()
+        public ActionResult ShowBalance()
         {
             ViewData["AccountNo"] = HttpContext.Session.GetString("AccountNo");
             ViewData["Balance"] = HttpContext.Session.GetString("BalanceString");
@@ -555,12 +555,12 @@ namespace PFD_Project.Controllers
         }
 
         // Fingerprint Controller
-        public IActionResult FingerprintIndex() => View();
+        public ActionResult FingerprintIndex() => View();
 
         [Authorize]
-        public IActionResult Secure() => View("Index");
+        public ActionResult Secure() => View("Index");
 
-        public IActionResult StartRegistration() => View();
+        public ActionResult StartRegistration() => View();
 
         [HttpPost]
         [ValidateAntiForgeryToken]
